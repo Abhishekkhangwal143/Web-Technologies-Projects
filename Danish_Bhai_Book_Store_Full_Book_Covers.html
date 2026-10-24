@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danish Bhai Book Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,800;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7ef; --panel:#ffffff; --ink:#17142e; --muted:#645f7a; --line:#eadfd2;
+  --violet:#6a4cff; --coral:#ff6b4a; --mint:#12b5a2; --glow:rgba(106,76,255,.18);
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e0d1f; --panel:#1a1830; --ink:#f4f1ff; --muted:#a7a2c4; --line:#2c2950; --glow:rgba(140,118,255,.25);}}
+:root[data-theme="dark"]{--bg:#0e0d1f; --panel:#1a1830; --ink:#f4f1ff; --muted:#a7a2c4; --line:#2c2950; --glow:rgba(140,118,255,.25);}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;overflow-x:hidden;transition:background .4s,color .4s}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,var(--glow),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%;transition:left .25s,top .25s}
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:14px 5%;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--violet),var(--coral));display:grid;place-items:center;font-size:22px;animation:wob 4s ease-in-out infinite}
+@keyframes wob{50%{transform:rotate(-8deg) scale(1.06)}}
+.brand h1{font-size:1.2rem}.brand p{margin:0;font-size:.78rem;color:var(--muted)}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;padding:8px 14px;border-radius:999px;transition:.25s}
+nav a:hover,nav a.active{background:var(--ink);color:var(--bg)}
+#themeBtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;transition:transform .4s}
+#themeBtn:hover{transform:rotate(180deg)}
+.wrap{position:relative;z-index:1}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:70px 5% 50px;max-width:1180px;margin:0 auto}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:.85rem;font-weight:600;margin-bottom:20px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(18,181,162,.6)}100%{box-shadow:0 0 0 12px rgba(18,181,162,0)}}
+.hero h2{font-size:clamp(2.3rem,5.5vw,4rem);line-height:1.06;font-weight:800}
+.grad{background:linear-gradient(90deg,var(--violet),var(--coral),var(--violet));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 5s linear infinite}
+@keyframes flow{to{background-position:200%}}
+.type::after{content:"|";margin-left:2px;animation:blink 1s steps(1) infinite;color:var(--coral)}
+@keyframes blink{50%{opacity:0}}
+.hero p{color:var(--muted);font-size:1.08rem;line-height:1.7;max-width:46ch;margin:18px 0 28px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-family:inherit;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+.btn.p{background:linear-gradient(135deg,var(--violet),var(--coral));color:#fff}
+.btn.p:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(106,76,255,.35)}
+.btn.o{border:1.5px solid var(--ink);color:var(--ink);background:transparent;margin-left:10px}
+.btn.o:hover{background:var(--ink);color:var(--bg)}
+.stack{position:relative;height:340px;perspective:900px;display:grid;place-items:center}
+.bk{position:absolute;width:190px;height:250px;border-radius:6px 14px 14px 6px;box-shadow:-8px 10px 30px rgba(0,0,0,.25);
+  display:flex;align-items:flex-end;padding:16px;color:#fff;font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;animation:float 6s ease-in-out infinite}
+.bk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:rgba(0,0,0,.2);border-radius:6px 0 0 6px}
+.b1{background:linear-gradient(145deg,#6a4cff,#3b27c4);transform:rotateY(-24deg) rotateZ(-8deg) translateX(-70px)}
+.b2{background:linear-gradient(145deg,#ff6b4a,#d8431f);transform:rotateY(-24deg) translateY(10px);animation-delay:-2s;z-index:2}
+.b3{background:linear-gradient(145deg,#12b5a2,#0a7d70);transform:rotateY(-24deg) rotateZ(8deg) translateX(70px);animation-delay:-4s}
+@keyframes float{50%{translate:0 -18px}}
+.marq{overflow:hidden;background:var(--ink);color:var(--bg);padding:14px 0;transform:rotate(-1.2deg);margin:20px -2%}
+.track{display:flex;gap:44px;width:max-content;animation:scroll 22s linear infinite;font-weight:600;letter-spacing:.04em}
+.marq:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+main{max-width:1180px;margin:0 auto;padding:40px 5% 30px}
+section{margin-bottom:70px}
+h3.t{font-size:2rem;margin-bottom:24px;position:relative;display:inline-block}
+h3.t::after{content:"";position:absolute;left:0;bottom:-6px;height:4px;width:100%;background:linear-gradient(90deg,var(--violet),var(--coral));border-radius:4px;transform:scaleX(0);transform-origin:left;transition:transform .9s .2s}
+.in h3.t::after{transform:scaleX(1)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.cat{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 18px;font-weight:600;transition:.3s;cursor:default}
+.cat span{display:block;font-size:2rem;margin-bottom:8px;transition:transform .3s}
+.cat:hover{transform:translateY(-8px);border-color:var(--violet);box-shadow:0 16px 30px var(--glow)}
+.cat:hover span{transform:scale(1.3) rotate(-10deg)}
+#q{width:100%;max-width:380px;padding:13px 18px;border-radius:12px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;margin-bottom:22px;transition:border-color .2s,box-shadow .2s}
+#q:focus{outline:0;border-color:var(--violet);box-shadow:0 0 0 4px var(--glow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;transition:transform .15s,box-shadow .3s;transform-style:preserve-3d}
+.card:hover{box-shadow:0 20px 40px var(--glow)}
+.cover{height:150px;border-radius:12px;display:flex;align-items:flex-end;padding:14px;color:#fff;font-family:'Fraunces',serif;font-weight:800;font-size:1.1rem;margin-bottom:16px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s}
+.card:hover .cover::after{transform:translateX(120%)}
+.card h4{margin:0;font-size:1.1rem}.card small{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.price{font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem;color:var(--violet)}
+.add{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:10px 18px;font:600 .9rem 'Outfit',sans-serif;cursor:pointer;transition:.2s}
+.add:hover{background:var(--coral);color:#fff;transform:scale(1.06)}
+.offer{position:relative;overflow:hidden;border-radius:24px;padding:46px 24px;text-align:center;color:#fff;font-family:'Fraunces',serif;font-weight:800;font-size:clamp(1.3rem,3vw,2rem);
+  background:linear-gradient(120deg,var(--violet),var(--coral),var(--mint),var(--violet));background-size:300%;animation:flow 8s linear infinite}
+.offer::before{content:"20%";position:absolute;right:-10px;top:-30px;font-size:9rem;opacity:.15}
+.offer small{display:block;font:500 .95rem 'Outfit',sans-serif;opacity:.9;margin-top:8px}
+.lead{color:var(--muted);line-height:1.75;max-width:62ch}
+#cart{position:sticky;bottom:0;z-index:25;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--ink);color:var(--bg);padding:14px 5%;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+#cart label{display:flex;gap:8px;align-items:center;font-size:.9rem;cursor:pointer}
+#cart button{border:0;border-radius:9px;padding:9px 18px;font:600 .9rem 'Outfit',sans-serif;cursor:pointer;background:var(--coral);color:#fff}
+#cartText.pop{animation:pop .4s}
+@keyframes pop{40%{transform:scale(1.15)}}
+footer{text-align:center;padding:26px;color:var(--muted);font-size:.85rem}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--violet);color:#fff;padding:11px 20px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:50}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.pt{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:60;animation:burst .8s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+.in .rv,.rv.in{opacity:1;transform:none}
+
+.toolshelf{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0}
+.toolshelf #q{flex:1;min-width:220px;margin:0;max-width:none}
+.toolshelf select{padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;min-width:190px}
+.count{color:var(--muted);font-size:.9rem}
+.cat{cursor:pointer}.cat small{display:block;color:var(--muted);font-weight:400;font-size:.82rem;margin-top:6px}
+.book-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:.72rem;padding:4px 8px;border-radius:999px;background:var(--glow);color:var(--violet);font-weight:600}
+.card .cover{height:178px;align-items:flex-start;flex-direction:column;justify-content:space-between;font-size:1rem;letter-spacing:.02em}
+.cover .cover-mark{font-size:2rem;opacity:.9}
+.card p.desc{font-size:.86rem;line-height:1.5;color:var(--muted);min-height:38px;margin:10px 0 0}
+.highlight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.highlight{background:var(--panel);border:1px solid var(--line);padding:25px;border-radius:20px;transition:.3s}
+.highlight:hover{transform:translateY(-6px);box-shadow:0 16px 30px var(--glow)}
+.highlight>span{font-size:2rem}.highlight h4{font-size:1.15rem;margin:12px 0 8px}.highlight p{color:var(--muted);line-height:1.65;font-size:.92rem}
+.highlight a{color:var(--violet);font-weight:700;text-decoration:none}
+.empty-state{grid-column:1/-1;padding:30px;text-align:center;border:1px dashed var(--line);border-radius:16px;color:var(--muted)}
+#contact .contact-panel{padding:28px;border:1px solid var(--line);background:var(--panel);border-radius:20px}
+#contact a{color:var(--violet)}
+@media(max-width:600px){.toolshelf{align-items:stretch}.toolshelf #q,.toolshelf select{width:100%;min-width:0}.card .cover{height:155px}.btn.o{margin:10px 0 0 0}}
+
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:40px}.stack{height:280px;order:-1}.bk{width:150px;height:200px}.b1{transform:rotateY(-24deg) rotateZ(-8deg) translateX(-55px)}.b3{transform:rotateY(-24deg) rotateZ(8deg) translateX(55px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* Checkout, order and delivery panels */
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,8,25,.68);z-index:100;display:none;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.modal-backdrop.open{display:flex}.modal{width:min(720px,100%);max-height:92vh;overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 24px 80px #0004}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.modal-head h3{font-size:1.65rem}.close-modal{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 12px;cursor:pointer}
+.checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;font-weight:600}.field input,.field textarea,.field select{width:100%;padding:12px 13px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}.field textarea{min-height:78px;resize:vertical}.summary-box,.status-box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:15px;margin:14px 0}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btn.secondary{background:var(--bg);border:1px solid var(--line);color:var(--ink)}.order-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}.order-line:last-child{border-bottom:0}.status-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.status-step{padding:10px 5px;border-radius:10px;text-align:center;background:var(--line);font-size:.78rem}.status-step.done{background:var(--mint);color:white}.note{font-size:.84rem;color:var(--muted);line-height:1.6}.hidden{display:none!important}
+@media(max-width:600px){.checkout-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:18px}.status-steps{grid-template-columns:repeat(2,1fr)}#cart{gap:8px}#cart button{padding:9px 12px}}
+
+/* Premium illustrated book-jacket covers */
+.book-jacket{
+  --c1:#172554;--c2:#2563eb;--accent:#f8d889;
+  position:relative;isolation:isolate;overflow:hidden;
+  height:250px!important;min-height:250px;width:100%;
+  margin:0 0 18px!important;padding:0!important;
+  display:flex;align-items:stretch;justify-content:center;
+  border-radius:13px 16px 16px 13px;
+  background:linear-gradient(115deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.12) 7%,transparent 16%),linear-gradient(135deg,var(--c1),var(--c2));
+  box-shadow:inset 5px 0 0 rgba(255,255,255,.12),inset -2px 0 0 rgba(0,0,0,.18),0 12px 22px rgba(12,10,35,.20);
+  transform-style:preserve-3d;transition:transform .35s,box-shadow .35s;
+}
+.book-jacket:before{
+  content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,var(--accent) 75%,transparent);
+  border-radius:3px;opacity:.9;pointer-events:none;z-index:1;
+}
+.book-jacket:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 18%,rgba(255,255,255,.19) 35%,transparent 48%);
+  transform:translateX(-130%);transition:transform .8s;pointer-events:none;z-index:5;
+}
+.card:hover .book-jacket:after{transform:translateX(130%)}
+.card:hover .book-jacket{box-shadow:inset 5px 0 0 rgba(255,255,255,.16),0 20px 32px rgba(12,10,35,.28)}
+.jacket-spine{
+  position:absolute;left:0;top:0;bottom:0;width:19px;z-index:2;
+  background:linear-gradient(90deg,rgba(0,0,0,.36),rgba(255,255,255,.10) 45%,rgba(0,0,0,.12));
+  border-right:1px solid rgba(255,255,255,.22);
+}
+.jacket-content{
+  position:relative;z-index:3;width:100%;padding:24px 20px 20px 29px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:space-between;
+  color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.22);
+}
+.jacket-kicker{font:600 .58rem 'Outfit',sans-serif;letter-spacing:.22em;text-transform:uppercase;opacity:.9}
+.jacket-emblem{
+  width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--accent);
+  border-radius:50%;color:var(--accent);font-size:1.35rem;margin:5px auto 8px;
+  box-shadow:0 0 0 5px rgba(255,255,255,.045);
+}
+.jacket-title{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(.96rem,1.6vw,1.22rem);
+  line-height:1.13;font-weight:800;max-width:100%;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+}
+.jacket-rule{height:2px;width:42px;background:var(--accent);margin:11px auto 9px;border-radius:4px}
+.jacket-author{font:500 .68rem 'Outfit',sans-serif;line-height:1.35;opacity:.93;max-width:95%;overflow-wrap:anywhere}
+.jacket-foot{font:600 .55rem 'Outfit',sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--accent);margin-top:10px}
+.jacket-orbit{position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-68px;top:22px;z-index:0}
+.jacket-orbit:before,.jacket-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.11);border-radius:50%;inset:15px}
+.jacket-orbit:after{inset:32px}
+.jacket-dots{position:absolute;left:34px;bottom:38px;width:50px;height:34px;opacity:.22;background-image:radial-gradient(var(--accent) 1px,transparent 1px);background-size:8px 8px}
+@media(max-width:600px){.book-jacket{height:220px!important;min-height:220px}.jacket-content{padding:20px 15px 17px 25px}.jacket-title{font-size:1rem}}
+
+</style>
+</head>
+<body>
+<div id="glow"></div>
+<div class="wrap">
+<header>
+  <div class="brand"><div class="logo">📚</div><div><h1>Danish Bhai Book Store</h1><p>Your Online Destination for Books</p></div></div>
+  <nav>
+    <a href="#home" class="nl active">Home</a><a href="#books" class="nl">Books</a><a href="#categories" class="nl">Categories</a><a href="#offers" class="nl">Offers</a><a href="#contact" class="nl">Contact Us</a>
+    <button id="themeBtn" aria-label="Toggle theme">◐</button>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div>
+    <div class="badge"><i></i><span id="greeting">Welcome to Danish Bhai Book Store.</span></div>
+    <h2>Welcome to <span class="grad">Danish Bhai Book Store</span><br>for <span class="type" id="typed"></span></h2>
+    <p>Find books from different categories including technology, programming, fiction, business and education.</p>
+    <a href="#books" class="btn p">Browse books</a><a href="#offers" class="btn o">See offers</a>
+  </div>
+  <div class="stack"><div class="bk b1">Python</div><div class="bk b2">Web Tech</div><div class="bk b3">DBMS</div></div>
+</div>
+
+<div class="marq"><div class="track" id="track"></div></div>
+
+<main>
+  <section id="categories"><h3 class="t">Explore Our Libraries</h3>
+    <p class="lead">Har interest ke liye ek alag shelf — coding se novels aur competitive exams tak.</p>
+    <div class="cats">
+      <div class="cat rv" data-category="Programming"><span>💻</span>Programming Library <small>Code, web & software</small></div>
+      <div class="cat rv" data-category="Computer Science"><span>🖥️</span>Computer Science <small>Core CS subjects</small></div>
+      <div class="cat rv" data-category="Education"><span>🎓</span>College & Education <small>Study guides & textbooks</small></div>
+      <div class="cat rv" data-category="Fiction"><span>📖</span>Fiction & Novels <small>Stories for every mood</small></div>
+      <div class="cat rv" data-category="Self Help"><span>🌱</span>Self-Development <small>Habits & motivation</small></div>
+      <div class="cat rv" data-category="Business"><span>📈</span>Business Library <small>Money, leadership & startups</small></div>
+      <div class="cat rv" data-category="Competitive Exams"><span>🎯</span>Competitive Exams <small>Practice & preparation</small></div>
+      <div class="cat rv" data-category="Hindi"><span>🪔</span>Hindi Literature <small>Hindi classics & stories</small></div>
+      <div class="cat rv" data-category="Science"><span>🔬</span>Science & General Knowledge <small>Discover more</small></div>
+    </div></section>
+
+  <section id="books"><h3 class="t">The Book Collection</h3>
+    <p class="lead">Hand-picked favourites, useful textbooks aur timeless reads. Search karo ya library choose karo.</p>
+    <div class="toolshelf">
+      <input id="q" placeholder="Search by book, author or category…" aria-label="Search books">
+      <select id="categoryFilter" aria-label="Filter by category"><option value="All">All libraries</option><option>Programming</option><option>Computer Science</option><option>Education</option><option>Fiction</option><option>Self Help</option><option>Business</option><option>Competitive Exams</option><option>Hindi</option><option>Science</option></select>
+      <span id="bookCount" class="count"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="library-highlights"><h3 class="t">Library Highlights</h3>
+    <div class="highlight-grid">
+      <article class="highlight rv"><span>👨‍💻</span><h4>Tech & Coding Hub</h4><p>Programming fundamentals, web development, databases, algorithms and practical project learning.</p><a href="#books" data-pick="Programming">Explore tech books ↗</a></article>
+      <article class="highlight rv"><span>📚</span><h4>Study & Exam Corner</h4><p>College reference books, aptitude practice, general knowledge and exam preparation essentials.</p><a href="#books" data-pick="Competitive Exams">Explore study books ↗</a></article>
+      <article class="highlight rv"><span>☕</span><h4>Stories & Good Reads</h4><p>Novels, Hindi literature, inspiring biographies and books for relaxed weekend reading.</p><a href="#books" data-pick="Fiction">Explore stories ↗</a></article>
+    </div>
+  </section>
+
+  <section id="offers"><h3 class="t">Special Offer</h3>
+    <div class="offer rv">Get 20% discount on selected books.<small>Tick “Apply offer” in the cart bar to see your price.</small></div></section>
+
+  <section id="contact"><h3 class="t">Contact Us</h3>
+    <div class="contact-panel rv"><p class="lead">Have questions about a book or bulk order? Danish Bhai Book Store is here to help you find your next great read.</p><p>📚 Browse the collection, add your favourites to the cart, and use the cart summary to prepare your selection.</p><p><small>Note: This is a front-end demo store. Connect a real payment and order service before accepting live orders.</small></p></div></section>
+</main>
+
+<div id="cart"><span id="cartText">Cart: 0 items — ₹0</span><label><input type="checkbox" id="off"> Apply 20% offer</label><button id="viewCart">View selection</button><button id="clr">Clear</button></div>
+<div class="modal-backdrop" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle"><div class="modal"><div class="modal-head"><h3 id="checkoutTitle">Secure Checkout</h3><button class="close-modal" data-close="checkoutModal" aria-label="Close">✕</button></div><form id="checkoutForm"><div class="checkout-grid"><div class="field"><label for="custName">Full name *</label><input id="custName" name="custName" required autocomplete="name" placeholder="Your full name"></div><div class="field"><label for="custPhone">Mobile number *</label><input id="custPhone" name="custPhone" required inputmode="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number"></div><div class="field full"><label for="custEmail">Email (optional)</label><input id="custEmail" name="custEmail" type="email" autocomplete="email" placeholder="you@example.com"></div><div class="field full"><label for="custAddress">Delivery address *</label><textarea id="custAddress" name="custAddress" required autocomplete="street-address" placeholder="House / street / area"></textarea></div><div class="field"><label for="custCity">City *</label><input id="custCity" name="custCity" required autocomplete="address-level2" placeholder="City"></div><div class="field"><label for="custPin">PIN code *</label><input id="custPin" name="custPin" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit PIN code"></div><div class="field full"><label for="payMethod">Payment method *</label><select id="payMethod" name="payMethod"><option value="cod">Cash on Delivery (COD)</option><option value="upi">UPI / Online payment (setup required)</option></select></div></div><div class="summary-box" id="checkoutSummary"></div><p class="note" id="paymentNote">COD orders are saved in this browser as a demo. To receive real orders, connect a backend/order service.</p><div class="modal-actions"><button class="btn p" type="submit">Place Order</button><button class="btn secondary" type="button" data-close="checkoutModal">Continue Shopping</button></div></form></div></div>
+<div class="modal-backdrop" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle"><div class="modal"><div class="modal-head"><h3 id="orderTitle">Order & Delivery Tracking</h3><button class="close-modal" data-close="orderModal" aria-label="Close">✕</button></div><div id="orderContent"></div><div class="modal-actions"><button class="btn p" id="trackOrderBtn" type="button">Track Latest Order</button><button class="btn secondary" data-close="orderModal" type="button">Close</button></div></div></div>
+<footer>© 2026 Abhishek Khangwal. All rights reserved.</footer>
+</div>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const h=new Date().getHours();
+$('#greeting').textContent=(h<12?'Good Morning! ':h<17?'Good Afternoon! ':'Good Evening! ')+'Welcome to Danish Bhai Book Store.';
+// theme
+const root=document.documentElement;
+$('#themeBtn').onclick=()=>{const d=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);root.dataset.theme=d?'light':'dark'};
+// typewriter
+const words=['Programming','Computer Science','Business','Fiction','Competitive Exams'];let w=0,c=0,del=false;
+(function tick(){const t=$('#typed'),x=words[w];t.textContent=x.slice(0,c);
+ if(!del&&c===x.length){del=true;return setTimeout(tick,1300)}
+ if(del&&c===0){del=false;w=(w+1)%words.length}
+ c+=del?-1:1;setTimeout(tick,del?40:90)})();
+// marquee
+const m=words.map(x=>'✦ '+x).join('   ');$('#track').innerHTML=`<span>${m}   </span><span>${m}   </span>`.repeat(2);
+// cursor glow
+addEventListener('pointermove',e=>{$('#glow').style.left=e.clientX+'px';$('#glow').style.top=e.clientY+'px'});
+// reveal + nav highlight
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+  if(e.target.tagName==='SECTION'){$$('.nl').forEach(l=>l.classList.toggle('active',l.hash==='#'+e.target.id))}}}),{threshold:.25});
+$$('.rv,section').forEach((el,i)=>{el.style.transitionDelay=el.classList.contains('rv')?(i%4)*90+'ms':'';io.observe(el)});
+// Expanded curated demo catalogue (titles and prices are sample listings)
+const books=[
+['Clean Code','Robert C. Martin','Programming',599,'#172554','#2563eb','Write code that is easier to read and maintain.'],
+['The Pragmatic Programmer','Andrew Hunt & David Thomas','Programming',699,'#0f766e','#14b8a6','Practical habits for thoughtful software development.'],
+['Eloquent JavaScript','Marijn Haverbeke','Programming',499,'#f59e0b','#b45309','Learn JavaScript through examples and projects.'],
+['Learning Python','Mark Lutz','Programming',899,'#1d4ed8','#60a5fa','A detailed introduction to Python programming.'],
+['HTML & CSS: Design and Build Websites','Jon Duckett','Programming',549,'#be123c','#fb7185','A visual guide to building websites.'],
+['JavaScript: The Good Parts','Douglas Crockford','Programming',399,'#713f12','#eab308','A concise look at JavaScript fundamentals.'],
+['You Don’t Know JS Yet','Kyle Simpson','Programming',449,'#4c1d95','#a78bfa','Explore the deeper parts of JavaScript.'],
+['Head First Design Patterns','Eric Freeman & Elisabeth Robson','Programming',799,'#9f1239','#fb7185','Understand reusable software design patterns.'],
+['Introduction to Algorithms','Thomas H. Cormen et al.','Computer Science',999,'#334155','#94a3b8','A classic reference for algorithms and problem solving.'],
+['Operating System Concepts','Abraham Silberschatz et al.','Computer Science',899,'#1e3a8a','#38bdf8','Core operating systems concepts and principles.'],
+['Computer Networking: A Top-Down Approach','James Kurose & Keith Ross','Computer Science',849,'#155e75','#22d3ee','Learn networking through a layered approach.'],
+['Database System Concepts','Abraham Silberschatz et al.','Computer Science',799,'#065f46','#34d399','Understand database design, SQL and transactions.'],
+['Computer Organization and Design','David A. Patterson & John L. Hennessy','Computer Science',899,'#581c87','#c084fc','Explore computer architecture and processor design.'],
+['Artificial Intelligence: A Modern Approach','Stuart Russell & Peter Norvig','Computer Science',1099,'#312e81','#818cf8','A broad introduction to AI concepts.'],
+['Discrete Mathematics and Its Applications','Kenneth H. Rosen','Education',899,'#7c2d12','#fb923c','Logic, sets, relations, graphs and proofs.'],
+['Let Us C','Yashavant Kanetkar','Education',399,'#166534','#86efac','A beginner-friendly guide to C programming.'],
+['Data Structures Through C','Yashavant Kanetkar','Education',449,'#9d174d','#f9a8d4','Study core data structures and implementations.'],
+['Quantitative Aptitude','R. S. Aggarwal','Competitive Exams',599,'#1d4ed8','#93c5fd','Practice arithmetic and quantitative reasoning.'],
+['A Modern Approach to Verbal & Non-Verbal Reasoning','R. S. Aggarwal','Competitive Exams',649,'#9a3412','#fdba74','Build reasoning skills with practice questions.'],
+['Lucent General Knowledge','Lucent Publications','Competitive Exams',299,'#365314','#bef264','A popular general knowledge reference.'],
+['Objective General English','S. P. Bakshi','Competitive Exams',499,'#701a75','#e879f9','Grammar, vocabulary and exam practice.'],
+['Wings of Fire','A. P. J. Abdul Kalam & Arun Tiwari','Self Help',299,'#92400e','#fbbf24','An inspiring autobiography about learning and ambition.'],
+['Atomic Habits','James Clear','Self Help',499,'#047857','#6ee7b7','Small habits and systems for personal growth.'],
+['Deep Work','Cal Newport','Self Help',449,'#1e40af','#93c5fd','Ideas for focused and meaningful work.'],
+['The 7 Habits of Highly Effective People','Stephen R. Covey','Self Help',549,'#4c1d95','#c4b5fd','Principles for personal and professional effectiveness.'],
+['Think and Grow Rich','Napoleon Hill','Business',299,'#713f12','#facc15','Classic ideas about goals and achievement.'],
+['The Lean Startup','Eric Ries','Business',499,'#0f766e','#5eead4','Experiment, learn and improve new business ideas.'],
+['Rich Dad Poor Dad','Robert T. Kiyosaki','Business',399,'#9f1239','#fda4af','A popular introduction to money mindsets.'],
+['Good to Great','Jim Collins','Business',599,'#1e3a8a','#60a5fa','Explore what helps organisations improve over time.'],
+['The Alchemist','Paulo Coelho','Fiction',299,'#92400e','#fcd34d','A fable about dreams and finding your path.'],
+['1984','George Orwell','Fiction',249,'#334155','#cbd5e1','A landmark dystopian novel.'],
+['Pride and Prejudice','Jane Austen','Fiction',279,'#9d174d','#f9a8d4','A beloved classic of manners and relationships.'],
+['The Hobbit','J. R. R. Tolkien','Fiction',399,'#166534','#bef264','A fantasy adventure into a remarkable world.'],
+['Malgudi Days','R. K. Narayan','Fiction',299,'#9a3412','#fdba74','Warm and memorable stories from Malgudi.'],
+['गोदान (Godaan)','मुंशी प्रेमचंद','Hindi',249,'#7c2d12','#fcd34d','हिंदी साहित्य का प्रसिद्ध उपन्यास।'],
+['गुनाहों का देवता','धर्मवीर भारती','Hindi',299,'#9d174d','#f9a8d4','प्रेम और जीवन के भावों से जुड़ा लोकप्रिय उपन्यास।'],
+['रश्मिरथी','रामधारी सिंह दिनकर','Hindi',199,'#92400e','#fbbf24','कर्ण पर आधारित प्रसिद्ध काव्य रचना।'],
+['मधुशाला','हरिवंश राय बच्चन','Hindi',199,'#6b21a8','#d8b4fe','हिंदी कविता की चर्चित कृति।'],
+['A Brief History of Time','Stephen Hawking','Science',399,'#0c4a6e','#7dd3fc','An accessible journey through cosmology.'],
+['The Selfish Gene','Richard Dawkins','Science',499,'#065f46','#6ee7b7','Explore evolution and gene-centred explanations.'],
+['Sapiens','Yuval Noah Harari','Science',599,'#7f1d1d','#fca5a5','A broad narrative of human history.'],
+['The Psychology of Money','Morgan Housel','Business',399,'#854d0e','#fde047','Stories about behaviour and financial decisions.'],
+['Ikigai','Héctor García & Francesc Miralles','Self Help',349,'#0f766e','#99f6e4','Reflections on purpose and everyday living.'],
+['The Blue Umbrella','Ruskin Bond','Fiction',199,'#1d4ed8','#bfdbfe','A gentle short story set in the hills.'],
+['Aptitude for Competitive Examinations','Abhijit Guha','Competitive Exams',499,'#4338ca','#a5b4fc','Practice aptitude questions for exam preparation.'],
+['Fundamentals of Physics','Halliday, Resnick & Walker','Science',999,'#164e63','#67e8f9','A comprehensive introduction to physics.'],
+['The Intelligent Investor','Benjamin Graham','Business',699,'#3f6212','#bef264','A classic book on long-term investing principles.'],
+['C Programming Language','Brian W. Kernighan & Dennis M. Ritchie','Programming',499,'#7e22ce','#d8b4fe','A classic reference for C language fundamentals.'],
+['Computer Fundamentals','P. K. Sinha','Computer Science',499,'#0f766e','#99f6e4','A foundation in computer concepts and systems.']
+];
+const grid=$('#grid'),q=$('#q'),filter=$('#categoryFilter');
+
+function coverText(value){
+ return String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function makeBookCover(book){
+ const [title,author,category,price,c1,c2]=book;
+ const icons={
+  'Programming':'⌘','Computer Science':'⌬','Education':'✦','Fiction':'❧',
+  'Self Help':'✺','Business':'◆','Competitive Exams':'✧','Hindi':'ॐ','Science':'⚛'
+ };
+ const emblems={'Programming':'</>','Computer Science':'⌘','Education':'✦','Fiction':'❧','Self Help':'✺','Business':'◆','Competitive Exams':'✧','Hindi':'अ','Science':'⚛'};
+ const footers={'Programming':'CODE • CREATE • BUILD','Computer Science':'SYSTEMS & IDEAS','Education':'LEARN • PRACTICE • GROW','Fiction':'A STORY TO REMEMBER','Self Help':'GROW EVERY DAY','Business':'IDEAS INTO ACTION','Competitive Exams':'PREPARE • PRACTICE • SUCCEED','Hindi':'हिंदी साहित्य','Science':'EXPLORE THE UNKNOWN'};
+ return `<div class="cover book-jacket" style="--c1:${c1};--c2:${c2};--accent:#f5d98d" role="img" aria-label="Designed cover for ${coverText(title)}">
+   <span class="jacket-spine"></span><span class="jacket-orbit"></span><span class="jacket-dots"></span>
+   <div class="jacket-content">
+    <span class="jacket-kicker">Danish Bhai Book Store • Library Edition</span>
+    <div>
+     <div class="jacket-emblem">${emblems[category]||icons[category]||'✦'}</div>
+     <div class="jacket-title">${coverText(title)}</div>
+     <div class="jacket-rule"></div>
+     <div class="jacket-author">${coverText(author)}</div>
+    </div>
+    <span class="jacket-foot">${footers[category]||'A GOOD BOOK • A NEW WORLD'}</span>
+   </div>
+  </div>`;
+}
+
+function renderBooks(){
+ const term=q.value.trim().toLowerCase(),cat=filter.value;
+ const list=books.filter(b=>(cat==='All'||b[2]===cat)&&b.join(' ').toLowerCase().includes(term));
+ $('#bookCount').textContent=`${list.length} books`;
+ grid.innerHTML=list.length?list.map((b,i)=>`<article class="card rv" data-price="${b[3]}">${makeBookCover(b)}<h4>${b[0]}</h4><small>${b[1]}</small><div class="book-meta"><span class="tag">${b[2]}</span><span class="tag">Curated pick</span></div><p class="desc">${b[6]}</p><div class="row"><span class="price">₹${b[3]}</span><button class="add" data-index="${books.indexOf(b)}">Add to cart</button></div></article>`).join(''):'<div class="empty-state">No books found. Try another search or library.</div>';
+ grid.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=(i%4)*55+'ms';requestAnimationFrame(()=>c.classList.add('in'))});
+ grid.querySelectorAll('.add').forEach(b=>b.onclick=()=>{const book=books[+b.dataset.index];cart.push({title:book[0],price:book[3]});upd();show(`Added “${book[0]}” to cart`)});
+ grid.querySelectorAll('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`});c.addEventListener('pointerleave',()=>c.style.transform='')});
+}
+q.oninput=renderBooks;filter.onchange=renderBooks;
+document.querySelectorAll('.cat[data-category]').forEach(el=>el.onclick=()=>{filter.value=el.dataset.category;renderBooks();location.hash='books'});
+document.querySelectorAll('[data-pick]').forEach(a=>a.onclick=()=>{filter.value=a.dataset.pick;renderBooks()});
+// Cart, checkout, local demo orders and delivery tracking
+let cart=[];
+const toast=$('#toast');
+function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(show.t);show.t=setTimeout(()=>toast.classList.remove('show'),2200)}
+function subtotal(){return cart.reduce((a,b)=>a+b.price,0)}
+function totalPrice(){const sum=subtotal();return $('#off').checked?Math.round(sum*.8):sum}
+function upd(){const sum=subtotal(),total=totalPrice();$('#cartText').textContent=`Cart: ${cart.length} item${cart.length===1?'':'s'} — ₹${total}`+($('#off').checked&&sum?` (saved ₹${sum-total})`:'');const el=$('#cartText');el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop')}
+function openModal(id){$('#'+id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(id){$('#'+id).classList.remove('open');if(!document.querySelector('.modal-backdrop.open'))document.body.style.overflow=''}
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close)));
+document.querySelectorAll('.modal-backdrop').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-backdrop.open').forEach(m=>closeModal(m.id))});
+$('#off').onchange=upd;
+$('#clr').onclick=()=>{cart=[];upd();show('Cart cleared')};
+function renderCheckoutSummary(){const lines=cart.map(b=>`<div class="order-line"><span>${escapeHTML(b.title)}</span><span>₹${b.price}</span></div>`).join('');const sum=subtotal(),total=totalPrice();$('#checkoutSummary').innerHTML=`<strong>Order summary</strong>${lines}<div class="order-line"><span>Subtotal</span><strong>₹${sum}</strong></div>${$('#off').checked?`<div class="order-line"><span>Offer discount</span><strong>−₹${sum-total}</strong></div>`:''}<div class="order-line"><strong>Total</strong><strong>₹${total}</strong></div><p class="note">Delivery charges, if any, will need to be confirmed by the store.</p>`}
+function escapeHTML(v){return String(v).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+$('#viewCart').textContent='Checkout';
+$('#viewCart').onclick=()=>{if(!cart.length){show('Your cart is empty');return}renderCheckoutSummary();openModal('checkoutModal')};
+$('#payMethod').onchange=()=>{$('#paymentNote').textContent=$('#payMethod').value==='upi'?'Online payment is not activated yet. A payment gateway and verified merchant account must be connected before accepting online payments. You can still save this as a demo order.':'COD is selected. This demo records the order only in this browser; it does not notify the store.'};
+function getOrders(){try{return JSON.parse(localStorage.getItem('danishBookOrders')||'[]')}catch(e){return []}}
+function saveOrders(orders){try{localStorage.setItem('danishBookOrders',JSON.stringify(orders));return true}catch(e){return false}}
+$('#checkoutForm').addEventListener('submit',e=>{e.preventDefault();if(!cart.length){show('Your cart is empty');closeModal('checkoutModal');return}const fd=new FormData(e.currentTarget);const payment=fd.get('payMethod');const order={id:'DBS-'+Date.now().toString().slice(-8),createdAt:new Date().toISOString(),customer:{name:fd.get('custName').trim(),phone:fd.get('custPhone').trim(),email:fd.get('custEmail').trim(),address:fd.get('custAddress').trim(),city:fd.get('custCity').trim(),pin:fd.get('custPin').trim()},items:cart.map(b=>({title:b.title,price:b.price})),subtotal:subtotal(),discount:$('#off').checked?subtotal()-totalPrice():0,total:totalPrice(),payment:payment==='cod'?'Cash on Delivery':'UPI / Online (not paid)',status:'Order Placed'};const orders=getOrders();orders.unshift(order);if(!saveOrders(orders)){show('Could not save order in this browser');return}cart=[];upd();e.currentTarget.reset();$('#paymentNote').textContent='COD orders are saved in this browser as a demo. To receive real orders, connect a backend/order service.';closeModal('checkoutModal');show('Demo order saved: '+order.id);renderOrder(order)});
+function renderOrder(order){if(!order){$('#orderContent').innerHTML='<p>No orders found on this browser yet. Place an order to see its tracking details.</p>';return}const stages=['Order Placed','Processing','Shipped','Delivered'];const current=stages.indexOf(order.status);const items=order.items.map(it=>`<div class="order-line"><span>${escapeHTML(it.title)}</span><span>₹${it.price}</span></div>`).join('');$('#orderContent').innerHTML=`<div class="status-box"><strong>Order ID: ${escapeHTML(order.id)}</strong><p class="note">Placed ${new Date(order.createdAt).toLocaleString()}</p><p><strong>Status:</strong> ${escapeHTML(order.status)}</p><div class="status-steps">${stages.map((s,i)=>`<div class="status-step ${i<=current?'done':''}">${i+1}. ${s}</div>`).join('')}</div></div><div class="summary-box"><strong>Items</strong>${items}<div class="order-line"><strong>Total</strong><strong>₹${order.total}</strong></div><p class="note">Payment: ${escapeHTML(order.payment)}</p><p class="note">Delivery to: ${escapeHTML(order.customer.address)}, ${escapeHTML(order.customer.city)} — ${escapeHTML(order.customer.pin)}</p><p class="note">Demo tracking only: the delivery status will not update automatically until a real shipping service is connected.</p></div>`;openModal('orderModal')}
+$('#trackOrderBtn').onclick=()=>{const orders=getOrders();renderOrder(orders[0])};
+// Provide an order-history entry point from the contact section.
+const contact=$('#contact .contact-panel');if(contact){const track=document.createElement('button');track.className='btn p';track.type='button';track.textContent='Track My Order';track.style.marginTop='10px';track.onclick=()=>renderOrder(getOrders()[0]);contact.appendChild(track)}
+renderBooks();upd();
+</script>
+</body>
+</html>
