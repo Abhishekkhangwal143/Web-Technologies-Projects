@@ -2,255 +2,431 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#07142d">
-<meta name="description" content="Modern ICFAI University Jaipur and IcfaiTech website concept with programs, campus network, placements and admissions.">
-<title>ICFAI University Jaipur | IcfaiTech</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Devdas University of Cambridge — Jaipur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#07142d;--navy2:#0d2145;--blue:#1769ff;--cyan:#21c7ff;--gold:#e9a62a;
-  --ink:#101828;--muted:#667085;--bg:#f6f8fc;--card:#fff;--line:#e6eaf0;
-  --shadow:0 16px 45px rgba(7,20,45,.08);--radius:24px;--max:1180px;
+  --bg:#FAFBFC; --panel:#FFFFFF; --navy:#1E3A5F; --navy-deep:#132A46;
+  --gold:#B8892E; --gold-soft:#F4EBD9; --ink:#17212E; --slate:#5B6579; --line:#E3E7EE; --navy-soft:#EAEFF5;
+  --grad1:#1E3A5F; --grad2:#3E6FA8; --grad3:#B8892E;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:82px}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
-body.menu-open{overflow:hidden}
-a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}
-img{display:block;max-width:100%}
-.container{width:min(var(--max),calc(100% - 36px));margin:auto}
-.section{padding:88px 0;content-visibility:auto;contain-intrinsic-size:700px}
-.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.section-head{max-width:760px;margin-bottom:42px}.section-head h2{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em;margin-bottom:15px}.section-head p{color:var(--muted);font-size:17px}
+:root[data-theme="dark"]{
+  --bg:#0E1620; --panel:#161F2B; --navy:#4A7CB5; --navy-deep:#0A121B; --gold:#DDAE58;
+  --gold-soft:#2A2417; --ink:#EDF0F4; --slate:#93A0B5; --line:#28323F; --navy-soft:#182432;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:74px;}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.65; transition:background .3s ease,color .3s ease; overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Newsreader',serif; margin:0; color:var(--ink); font-weight:600;}
+a{color:inherit; text-decoration:none;} img{max-width:100%; display:block;} ul{margin:0; padding:0; list-style:none;}
 
-/* ---------- official uploaded ICFAI Jaipur logo ---------- */
-.official-logo{width:172px;height:auto;display:block;object-fit:contain}
-.hero-logo{width:min(330px,82vw);height:auto;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 14px 38px rgba(7,20,45,.10);border:1px solid rgba(7,20,45,.07);margin-bottom:22px}
-.hero-address{display:flex;align-items:flex-start;gap:10px;margin-top:18px;padding:13px 15px;border:1px solid rgba(7,20,45,.08);background:rgba(255,255,255,.76);border-radius:15px;max-width:620px;color:#475467;font-size:12px;line-height:1.55;box-shadow:0 8px 24px rgba(7,20,45,.05)}
-.hero-address strong{display:block;color:var(--navy);font-size:12px;margin-bottom:2px}
-.hero-address .pin{width:27px;height:27px;border-radius:9px;display:grid;place-items:center;background:#edf4ff;color:var(--blue);flex:none}
-@media(max-width:760px){.official-logo{width:145px}.hero-logo{width:min(290px,86vw)}.hero-address{font-size:11px}}
+/* header */
+header{position:sticky; top:0; z-index:70; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+nav{max-width:1200px; margin:0 auto; padding:15px 6%; display:flex; align-items:center; justify-content:space-between; gap:18px;}
+.brand{display:flex; align-items:center; gap:11px;}
+.brand-mark{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--grad1),var(--grad2));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-weight:700;font-size:1.1rem;}
+.brand-text h1{font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;}
+.brand-text p{margin:2px 0 0;font-size:.76rem;color:var(--slate);}
+.nav-links{display:flex; gap:26px; font-size:.9rem; font-weight:500;}
+.nav-links a{position:relative; color:var(--slate); padding:6px 0; transition:color .2s;}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:width .25s;}
+.nav-links a:hover{color:var(--ink);} .nav-links a:hover::after{width:100%;}
+.header-actions{display:flex;align-items:center;gap:10px;}
+.theme-btn,.menu-btn{width:38px;height:38px;border-radius:7px;border:1px solid var(--line);background:var(--panel);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:border-color .2s,transform .3s;}
+.theme-btn:hover{border-color:var(--gold);transform:rotate(14deg);}
+.theme-btn svg{width:18px;height:18px;position:absolute;transition:opacity .25s,transform .4s;}
+.theme-btn{position:relative;}
+.theme-btn .sun{opacity:0;transform:scale(.4) rotate(-90deg);}
+.theme-btn .moon{opacity:1;transform:scale(1) rotate(0);}
+:root[data-theme="dark"] .theme-btn .sun{opacity:1;transform:scale(1) rotate(0);}
+:root[data-theme="dark"] .theme-btn .moon{opacity:0;transform:scale(.4) rotate(90deg);}
+.menu-btn{display:none;flex-direction:column;gap:4px;}
+.menu-btn span{width:16px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s;}
+.menu-btn.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.menu-btn.open span:nth-child(2){opacity:0;}
+.menu-btn.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-/* ---------- lightweight logo: vector, always sharp/HD ---------- */
-.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand-mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(from 215deg,#0b55c8,#28bfff,#e9a62a,#0b55c8);box-shadow:0 5px 16px rgba(23,105,255,.2)}
-.brand-mark:after{content:"";width:29px;height:29px;border-radius:50%;background:#fff}.brand-mark span{position:absolute;z-index:1;font-size:12px;letter-spacing:-.05em;color:#12386f}.brand-text{line-height:1.05;font-size:13px}.brand-text small{display:block;color:var(--muted);font-size:9px;letter-spacing:.13em;margin-top:4px}
+/* ticker */
+.ticker-wrap{background:var(--navy-deep);color:#fff;overflow:hidden;white-space:nowrap;padding:9px 0;}
+.ticker{display:inline-block;padding-left:100%;animation:ticker 22s linear infinite;font-size:.86rem;}
+.ticker span{margin-right:60px;color:#CBD8EB;}
+.ticker b{color:var(--gold);}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
 
-/* ---------- navbar ---------- */
-.nav{position:fixed;z-index:1000;top:0;left:0;right:0;height:70px;background:rgba(255,255,255,.88);border-bottom:1px solid rgba(15,23,42,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow .25s ease}
-.nav.scrolled{box-shadow:0 8px 28px rgba(7,20,45,.08)}.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}.nav-links{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:650;color:#344054}.nav-links a{transition:color .2s ease}.nav-links a:hover{color:var(--blue)}
-.nav-actions{display:flex;align-items:center;gap:8px}.icon-btn{width:38px;height:38px;border:1px solid var(--line);background:#fff;border-radius:12px;cursor:pointer}.menu-btn{display:none}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:13px;padding:12px 18px;font-size:13px;font-weight:750;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.btn:hover{transform:translateY(-2px)}.btn-primary{color:#fff;background:var(--blue);box-shadow:0 8px 20px rgba(23,105,255,.22)}.btn-dark{color:#fff;background:var(--navy)}.btn-light{background:#fff;border:1px solid var(--line)}
+/* hero */
+.hero{position:relative;padding:100px 6% 90px;overflow:hidden;border-bottom:1px solid var(--line);}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:0;animation:float 9s ease-in-out infinite;}
+.blob1{width:340px;height:340px;background:var(--grad2);top:-100px;right:8%;}
+.blob2{width:260px;height:260px;background:var(--grad3);bottom:-80px;left:4%;animation-delay:-3s;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-26px) scale(1.06);}}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;text-align:center;}
+.hero-label{display:inline-flex;align-items:center;gap:9px;font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:18px;}
+.hero-label .rule{width:24px;height:1px;background:var(--gold);}
+.hero h2{font-size:clamp(2.1rem,4.6vw,3.4rem);max-width:18ch;margin:0 auto;line-height:1.15;}
+.hero p{max-width:52ch;margin:18px auto 0;color:var(--slate);font-size:1.08rem;}
+.hero-actions{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
 
-/* ---------- hero ---------- */
-.hero{min-height:760px;padding:145px 0 80px;background:radial-gradient(circle at 75% 25%,rgba(33,199,255,.16),transparent 30%),linear-gradient(135deg,#f7fbff,#eef3fa 55%,#f9fbff);position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(23,105,255,.07);right:-150px;top:130px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:55px;position:relative;z-index:1}.hero h1{font-size:clamp(50px,7vw,88px);line-height:.94;letter-spacing:-.065em;max-width:720px}.hero h1 span{color:var(--blue)}.hero-copy{font-size:18px;color:var(--muted);max-width:650px;margin:22px 0 28px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-note{margin-top:20px;color:#667085;font-size:12px}.hero-media{position:relative}.hero-media img{width:100%;height:530px;object-fit:cover;border-radius:32px;box-shadow:0 28px 70px rgba(7,20,45,.17)}.hero-badge{position:absolute;left:-18px;bottom:26px;background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:15px 18px;box-shadow:var(--shadow);font-size:12px}.hero-badge strong{display:block;font-size:23px;line-height:1.05;color:var(--navy)}
+.btn-primary,.btn-ghost{padding:13px 27px;border-radius:6px;font-weight:600;font-size:.92rem;display:inline-block;border:1px solid transparent;position:relative;overflow:hidden;isolation:isolate;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;}
+.btn-primary::before,.btn-ghost::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.25) 50%,transparent 80%);transform:translateX(-120%);transition:transform .6s;}
+.btn-primary:hover::before,.btn-ghost:hover::before{transform:translateX(120%);}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 0 0 rgba(184,137,46,0);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(30,58,95,.28);}
+.btn-primary.glow{animation:pulseGlow 2.4s ease-in-out infinite;}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(184,137,46,.4);}50%{box-shadow:0 0 0 10px rgba(184,137,46,0);}}
+.btn-primary:active,.btn-ghost:active{transform:translateY(0) scale(.96);}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--panel);}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px);}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none;z-index:5;}
+@keyframes rip{to{transform:scale(2.6);opacity:0;}}
 
-/* ---------- quick stats ---------- */
-.stats{margin-top:-25px;position:relative;z-index:4}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.stat{padding:25px 22px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{font-size:28px;letter-spacing:-.04em}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+section{max-width:1200px;margin:0 auto;padding:84px 6%;}
+.section-head{margin-bottom:42px;max-width:60ch;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:.85rem;color:var(--gold);font-weight:600;}
+.section-head.center .kicker{justify-content:center;}
+.kicker .rule{width:24px;height:1px;background:var(--gold);}
+.section-head h3{font-size:clamp(1.6rem,3vw,2.1rem);}
 
-/* ---------- cards ---------- */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.feature{padding:25px}.feature-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:#edf4ff;color:var(--blue);font-size:21px;margin-bottom:20px}.feature h3{font-size:18px;margin-bottom:7px}.feature p{font-size:13px;color:var(--muted)}
+/* stats */
+.stats{background:var(--navy);color:#fff;}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 6%;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:38px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.15);}
+.stat:last-child{border-right:none;}
+.stat .num{font-family:'Newsreader',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:600;}
+.stat .lbl{margin-top:6px;font-size:.82rem;color:#C6D2E3;}
 
-/* ---------- tech panel ---------- */
-.tech-panel{background:var(--navy);color:#fff;border-radius:30px;padding:38px;overflow:hidden;position:relative}.tech-panel:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-100px;top:-100px;background:rgba(33,199,255,.14)}.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;position:relative;z-index:1}.tech-panel p{color:#b8c5da}.tech-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}.tech-item{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);border-radius:14px;padding:14px;font-size:13px}.tech-item b{display:block;color:#fff;margin-bottom:3px}.tech-visual{min-height:280px;display:grid;place-items:center}.orbit{width:260px;height:260px;border:1px solid rgba(255,255,255,.13);border-radius:50%;position:relative}.orbit:before,.orbit:after{content:"";position:absolute;inset:30px;border:1px solid rgba(33,199,255,.18);border-radius:50%}.orbit:after{inset:72px}.orbit-center{position:absolute;inset:90px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0d4db7,#18bfe8);font-weight:900;box-shadow:0 0 45px rgba(33,199,255,.25)}.dot{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 20px #21c7ff}.d1{top:16px;left:125px}.d2{right:17px;top:125px}.d3{bottom:18px;left:125px}.d4{left:18px;top:125px}
+/* courses */
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.course-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:30px 26px;transition:transform .3s,box-shadow .3s,border-color .3s;perspective:600px;}
+.course-card:hover{transform:translateY(-8px);box-shadow:0 22px 40px rgba(23,33,46,.12);border-color:var(--gold);}
+.course-icon{width:48px;height:48px;border-radius:10px;background:var(--gold-soft);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;transition:transform .4s;}
+.course-card:hover .course-icon{transform:rotate(-8deg) scale(1.1);}
+.course-card h4{font-size:1.12rem;} .course-card p{margin-top:8px;color:var(--slate);font-size:.92rem;}
+.course-fee{margin-top:14px;font-weight:700;color:var(--navy);font-size:.9rem;}
 
-/* ---------- programs ---------- */
-.program-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:750;cursor:pointer}.filter.active{background:var(--navy);color:#fff;border-color:var(--navy)}.program-card{padding:23px;transition:transform .22s ease,box-shadow .22s ease}.program-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(7,20,45,.1)}.program-card .tag{font-size:10px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.1em}.program-card h3{font-size:20px;margin:10px 0 7px}.program-card p{font-size:12px;color:var(--muted)}.program-card.hide{display:none}
+/* why us */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.why-card{text-align:center;padding:26px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--line);transition:transform .3s;}
+.why-card:hover{transform:translateY(-6px);}
+.why-icon{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,var(--grad1),var(--grad2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;}
+.why-card h4{font-size:1rem;} .why-card p{font-size:.86rem;color:var(--slate);margin-top:8px;}
 
-/* ---------- fees / placement ---------- */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.info-panel{padding:28px}.info-panel h3{font-size:25px;margin-bottom:12px}.info-panel p{font-size:13px;color:var(--muted)}.fee-row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}.fee-row:last-child{border:0}.fee-row b{font-size:13px}.placement-number{font-size:52px;font-weight:850;letter-spacing:-.055em;color:var(--navy);margin:12px 0}.company-wall{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.company{padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:12px;font-weight:800;letter-spacing:-.01em}.company span{color:var(--blue)}
+/* testimonials */
+.testi-wrap{position:relative;max-width:720px;margin:0 auto;min-height:190px;}
+.testi{position:absolute;inset:0;opacity:0;transform:translateX(24px);transition:opacity .5s ease,transform .5s ease;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:32px;text-align:center;}
+.testi.active{opacity:1;transform:translateX(0);position:relative;}
+.testi p{font-size:1.02rem;color:var(--ink);}
+.testi .who{margin-top:16px;font-weight:700;color:var(--navy);font-size:.9rem;}
+.testi-dots{display:flex;justify-content:center;gap:8px;margin-top:20px;}
+.testi-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--line);cursor:pointer;transition:background .3s,transform .3s;}
+.testi-dots button.active{background:var(--gold);transform:scale(1.3);}
 
-/* ---------- campus network ---------- */
-.campus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.campus{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:20px}.campus img{width:100%;height:185px;object-fit:cover}.campus-body{padding:18px}.campus-body small{color:var(--blue);font-size:10px;font-weight:800;text-transform:uppercase}.campus-body h3{font-size:19px;margin:5px 0}.campus-body p{font-size:12px;color:var(--muted)}
+/* contact */
+.contact-card{background:var(--navy-deep);border-radius:14px;padding:52px 6%;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+.contact-card h3{color:#fff;font-size:1.5rem;}
+.contact-card p{color:#B9C6DA;margin-top:10px;font-size:.98rem;}
+.contact-links{display:flex;flex-direction:column;gap:13px;}
+.contact-links a{display:flex;align-items:center;gap:10px;color:#fff;font-weight:600;font-size:.95rem;}
+.contact-links a svg{width:16px;height:16px;color:var(--gold);flex-shrink:0;}
+.contact-card a.btn-primary{background:var(--gold);}
+.contact-card a.btn-primary:hover{background:#A17A28;}
 
-/* ---------- gallery ---------- */
-.gallery{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-auto-rows:190px;gap:12px}.gallery img{width:100%;height:100%;object-fit:cover;border-radius:18px}.gallery .large{grid-row:span 2}
+/* placements */
+.placements{background:linear-gradient(165deg,var(--navy-deep) 0%,var(--navy) 100%);color:#fff;position:relative;overflow:hidden;}
+.placements .section-head .kicker{color:var(--gold);}
+.placements .section-head h3{color:#fff;}
+.pl-hero{text-align:center;perspective:900px;margin-bottom:14px;}
+.pl-number{font-family:'Newsreader',serif;font-weight:700;font-size:clamp(3.4rem,10vw,6.4rem);color:#FFE9B8;text-shadow:0 0 40px rgba(255,214,120,.45);line-height:1;transform-style:preserve-3d;}
+.pl-number.spin-in{animation:spinIn3d 1s cubic-bezier(.2,.9,.25,1) both;}
+@keyframes spinIn3d{from{opacity:0;transform:rotateX(70deg) translateY(40px) scale(.85);}to{opacity:1;transform:rotateX(0) translateY(0) scale(1);}}
+.pl-sub{font-size:1.15rem;font-weight:600;margin-top:6px;color:#fff;}
+.pl-date{font-size:.9rem;color:#C6D2E3;margin-top:4px;}
+.pl-badges{display:flex;justify-content:center;gap:14px;margin-top:22px;flex-wrap:wrap;}
+.pl-badges span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 18px;font-size:.86rem;}
+.pl-badges b{color:#FFD880;}
 
-/* ---------- contact ---------- */
-.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}.contact-info{padding:30px}.contact-info h3{font-size:30px;letter-spacing:-.04em}.contact-info p{color:var(--muted);font-size:13px;margin:10px 0 25px}.contact-item{padding:13px 0;border-top:1px solid var(--line)}.contact-item small{display:block;color:var(--muted);font-size:10px}.contact-item b{font-size:13px}.form{padding:30px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}.field label{display:block;font-size:11px;font-weight:800;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#f9fafb;border-radius:12px;padding:12px;outline:none}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#8db4ff;box-shadow:0 0 0 3px rgba(23,105,255,.09)}
+.recruiter-grid{margin-top:46px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;perspective:1000px;}
+.recruiter-card{background:#fff;border-radius:10px;padding:16px 10px;text-align:center;transform-style:preserve-3d;transition:transform .15s ease,box-shadow .3s ease;cursor:default;}
+.recruiter-card .co{color:var(--navy-deep);font-weight:700;font-size:.82rem;min-height:32px;display:flex;align-items:center;justify-content:center;}
+.recruiter-card .pkg{margin-top:8px;background:var(--gold);color:#3A2A05;font-weight:700;font-size:.82rem;border-radius:5px;padding:5px 0;}
+.recruiter-card:hover{box-shadow:0 18px 34px rgba(0,0,0,.35);}
+.pl-more{text-align:center;margin-top:16px;color:#C6D2E3;font-size:.86rem;font-style:italic;}
 
-/* ---------- chatbot ---------- */
-.chat-launch{position:fixed;right:20px;bottom:20px;width:54px;height:54px;border:0;border-radius:50%;background:var(--blue);color:#fff;box-shadow:0 14px 32px rgba(23,105,255,.28);z-index:1001;cursor:pointer;font-size:20px}.chat{position:fixed;right:20px;bottom:86px;width:min(350px,calc(100vw - 32px));height:470px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 25px 70px rgba(7,20,45,.18);z-index:1001;display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(10px) scale(.98);pointer-events:none;transition:opacity .2s ease,transform .2s ease}.chat.open{opacity:1;transform:none;pointer-events:auto}.chat-head{background:var(--navy);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}.chat-head b{font-size:13px}.chat-close{background:transparent;border:0;color:#fff;font-size:18px;cursor:pointer}.messages{flex:1;padding:14px;overflow:auto;background:#f7f9fc}.msg{max-width:85%;padding:9px 11px;border-radius:13px;margin-bottom:9px;font-size:12px}.bot{background:#fff;border:1px solid var(--line)}.user{margin-left:auto;background:#e8f0ff;color:#1246a5}.chat-input{display:flex;padding:10px;border-top:1px solid var(--line);gap:7px}.chat-input input{min-width:0;flex:1;border:1px solid var(--line);border-radius:11px;padding:10px;font-size:12px}.chat-input button{border:0;border-radius:11px;background:var(--blue);color:#fff;padding:0 14px;cursor:pointer}
-
-/* ---------- footer ---------- */
-footer{background:#06122a;color:#d8e1ef;padding:55px 0 25px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-grid h4{color:#fff;margin-bottom:12px}.footer-grid a,.footer-grid p{display:block;color:#9eacc2;font-size:12px;margin:7px 0}.footer-bottom{margin-top:35px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:15px;color:#8090a9;font-size:11px}
-
-/* ---------- reveal: one IntersectionObserver, no scroll loop ---------- */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}.reveal.visible{opacity:1;transform:none}
+.highlights{margin-top:50px;}
+.highlights h4{text-align:center;color:#fff;font-family:'Newsreader',serif;font-size:1.3rem;margin-bottom:22px;}
+.hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.hl-card{background:linear-gradient(150deg,#FFE9B8,var(--gold));border-radius:10px;padding:22px 14px;text-align:center;color:#3A2A05;transform-style:preserve-3d;transition:transform .35s ease;}
+.hl-card:hover{transform:rotateY(10deg) rotateX(-6deg) translateZ(10px);}
+.hl-card .n{font-family:'Newsreader',serif;font-weight:700;font-size:1.6rem;}
+.hl-card .l{font-size:.8rem;margin-top:4px;font-weight:600;}
 
 @media(max-width:900px){
-  .nav-links{position:fixed;top:70px;left:14px;right:14px;padding:15px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);display:none;flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.menu-btn{display:block}.nav-actions .apply{display:none}.hero-grid,.tech-grid,.split,.contact{grid-template-columns:1fr}.hero{min-height:auto;padding-top:120px}.hero-media img{height:420px}.stats-grid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.grid-4{grid-template-columns:1fr 1fr}.campus-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}
+  .recruiter-grid{grid-template-columns:repeat(3,1fr);}
+  .hl-grid{grid-template-columns:repeat(2,1fr);}
 }
-@media(max-width:600px){
-  .container{width:min(var(--max),calc(100% - 24px))}.section{padding:68px 0}.hero h1{font-size:54px}.hero-media img{height:300px;border-radius:24px}.hero-badge{left:10px;bottom:10px}.stats-grid,.grid-3,.grid-4,.campus-grid,.footer-grid{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.tech-list,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.gallery .large{grid-column:1/-1;grid-row:span 1}.footer-bottom{flex-direction:column}.section-head h2{font-size:40px}.brand-text{font-size:11px}.brand-mark{width:38px;height:38px}.brand-mark:after{width:26px;height:26px}
+
+footer{text-align:center;padding:30px 6%;color:var(--slate);font-size:.85rem;border-top:1px solid var(--line);}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--panel);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px 6% 14px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+  .nav-links a{padding:12px 0;border-bottom:1px solid var(--line);width:100%;}
+  .menu-btn{display:flex;}
+  .course-grid{grid-template-columns:1fr;} .why-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-inner{grid-template-columns:repeat(2,1fr);} .stat{border-bottom:1px solid rgba(255,255,255,.15);}
+  .stat:nth-child(2){border-right:none;}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.program-card{transition:none}.chat{transition:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important;} .reveal{opacity:1;transform:none;} .blob{display:none;}}
 </style>
 </head>
 <body>
 
-<header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="#home" aria-label="The ICFAI University, Jaipur">
-      <img class="official-logo" src="data:image/png;base64,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" alt="ICFAI University Jaipur logo">
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a><a href="#programs">Programs</a><a href="#placements">Placements</a><a href="#campuses">Campuses</a><a href="#life">Campus Life</a><a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-actions"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button><a class="btn btn-primary apply" href="#contact">Apply / Enquire</a></div>
+<header>
+  <nav>
+    <div class="brand">
+      <div class="brand-mark" style="font-size:.82rem;">DUC</div>
+      <div class="brand-text"><h1>Devdas University of Cambridge</h1><p>Jaipur, Rajasthan</p></div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#placements">Placements</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="ticker-wrap">
+    <div class="ticker"><span><b>Admissions open</b> for 2026-27 batch</span><span>Annual fee <b>₹1,00,000</b> — all UG & PG programs</span><span>Scholarship test on <b>10 October</b></span><span>Campus tour every <b>Saturday, 11 AM</b></span></div>
   </div>
 </header>
 
-<main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <img class="hero-logo" src="data:image/png;base64,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" alt="The ICFAI University, Jaipur official logo">
-      <div class="eyebrow">The ICFAI University, Jaipur</div>
-      <h1>Learn. <span>Build.</span> Lead.</h1>
-      <p class="hero-copy">A premium, technology-focused university experience across Business, Technology, Law, Liberal Arts and Pharmaceutical Sciences.</p>
-      <div class="hero-actions"><a class="btn btn-primary" href="#programs">Explore Programs →</a><a class="btn btn-light" href="#placements">Explore Placements</a></div>
-      <div class="hero-address" aria-label="Official campus address">
-        <span class="pin">⌖</span>
-        <div><strong>Campus Address</strong>The ICFAI University, Jaipur, Near Cambay Golf Resort,<br>Agra Road, Jamdoli, Jaipur - 302 031, Rajasthan</div>
+<section class="hero" style="max-width:none;padding-left:0;padding-right:0;">
+  <div class="blob blob1"></div><div class="blob blob2"></div>
+  <div class="hero-inner">
+    <div class="hero-label"><span class="rule"></span>Est. 1999 · NAAC A Grade</div>
+    <h2>A campus built for where technology is headed</h2>
+    <p>Undergraduate and postgraduate programs in computer science, management and commerce — taught by faculty who still practice in their field.</p>
+    <div class="hero-actions">
+      <a href="#courses" class="btn-primary glow">Explore courses</a>
+      <a href="#contact" class="btn-ghost">Book a campus visit</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="num" data-count="9">0</div><div class="lbl">Programs offered</div></div>
+    <div class="stat"><div class="num" data-count="120">0</div><div class="lbl">Faculty members</div></div>
+    <div class="stat"><div class="num" data-count="4200">0</div><div class="lbl">Students on campus</div></div>
+    <div class="stat"><div class="num" data-count="27">0</div><div class="lbl">Years established</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-head reveal center">
+    <div class="kicker"><span class="rule"></span>About us</div>
+    <h3>Education built around outcomes, not just credits</h3>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="section-head reveal"><div class="kicker"><span class="rule"></span>Courses</div><h3>Programs offered</h3></div>
+  <div class="course-grid">
+    <div class="course-card reveal"><div class="course-icon">🖥️</div><h4>BCA</h4><p>Programming, databases and application development.</p><div class="course-fee">₹1,00,000 / year</div></div>
+    <div class="course-card reveal"><div class="course-icon">📊</div><h4>MCA</h4><p>Advanced software systems and specialisation tracks.</p><div class="course-fee">₹1,00,000 / year</div></div>
+    <div class="course-card reveal"><div class="course-icon">⚙️</div><h4>B.Tech CS</h4><p>Core computer science with an engineering foundation.</p><div class="course-fee">₹1,00,000 / year</div></div>
+    <div class="course-card reveal"><div class="course-icon">📈</div><h4>BBA</h4><p>Business fundamentals with a management focus.</p><div class="course-fee">₹1,00,000 / year</div></div>
+    <div class="course-card reveal"><div class="course-icon">💼</div><h4>MBA</h4><p>Strategy, finance and leadership for working managers.</p><div class="course-fee">₹1,00,000 / year</div></div>
+    <div class="course-card reveal"><div class="course-icon">🧮</div><h4>B.Com</h4><p>Accounting, taxation and commerce fundamentals.</p><div class="course-fee">₹1,00,000 / year</div></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-head reveal center"><div class="kicker"><span class="rule"></span>Why us</div><h3>What sets the campus apart</h3></div>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="why-icon">🏛️</div><h4>Modern campus</h4><p>Smart classrooms and dedicated labs.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🤝</div><h4>Industry ties</h4><p>Internship pipelines with 60+ partner companies.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🎓</div><h4>Expert faculty</h4><p>Practitioners and published researchers.</p></div>
+    <div class="why-card reveal"><div class="why-icon">💰</div><h4>Scholarships</h4><p>Merit and need-based aid for eligible students.</p></div>
+  </div>
+</section>
+
+<section id="placements" class="placements" style="max-width:none;">
+  <div class="max">
+    <div class="section-head center reveal">
+      <div class="kicker"><span class="rule"></span>Announcing</div>
+      <div class="pl-hero">
+        <div class="pl-number" id="plNumber">0</div>
+        <div class="pl-sub">Placement offers</div>
+        <div class="pl-date">as on 31st March 2026</div>
+      </div>
+      <div class="pl-badges">
+        <span><b>230</b> Days</span><span><b>205</b> Recruiters</span><span><b>23</b> Sectors</span>
       </div>
     </div>
-    <div class="hero-media reveal">
-      <img src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI University Jaipur campus" fetchpriority="high" decoding="async">
-      <div class="hero-badge"><strong>ICFAI Jaipur</strong>The ICFAI University, Jaipur</div>
+
+    <div class="recruiter-grid reveal" id="recruiterGrid">
+      <div class="recruiter-card"><div class="co">Hewlett Packard Enterprise</div><div class="pkg">17.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">ServiceNow</div><div class="pkg">33 LPA</div></div>
+      <div class="recruiter-card"><div class="co">WatchGuard</div><div class="pkg">10.47 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Tredence</div><div class="pkg">10 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Deloitte</div><div class="pkg">6 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Zomato</div><div class="pkg">7.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Finastra</div><div class="pkg">10 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Capgemini</div><div class="pkg">4.25–7.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Futures First</div><div class="pkg">13 LPA</div></div>
+      <div class="recruiter-card"><div class="co">WNS</div><div class="pkg">6.64 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Vivnovation</div><div class="pkg">20 LPA</div></div>
+      <div class="recruiter-card"><div class="co">HCLTech</div><div class="pkg">4.25–8 LPA</div></div>
+      <div class="recruiter-card"><div class="co">TCS</div><div class="pkg">3.6–9 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Accenture</div><div class="pkg">3.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Blinkit</div><div class="pkg">4 & 7 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Wipro</div><div class="pkg">3.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">PwC</div><div class="pkg">6 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Yamaha</div><div class="pkg">8 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Nestlé</div><div class="pkg">6.8 LPA</div></div>
+      <div class="recruiter-card"><div class="co">BillDesk</div><div class="pkg">8.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Dabur</div><div class="pkg">3.25 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Xebia</div><div class="pkg">5.5 LPA</div></div>
+      <div class="recruiter-card"><div class="co">LTIMindtree</div><div class="pkg">4.25–6 LPA</div></div>
+      <div class="recruiter-card"><div class="co">Cognizant</div><div class="pkg">4.25–6 LPA</div></div>
+    </div>
+    <div class="pl-more reveal">and many more…</div>
+
+    <div class="highlights reveal">
+      <h4>Major highlights</h4>
+      <div class="hl-grid">
+        <div class="hl-card"><div class="n">33 LPA</div><div class="l">Highest package</div></div>
+        <div class="hl-card"><div class="n">10.70 LPA</div><div class="l">Average package, top 30% offers</div></div>
+        <div class="hl-card"><div class="n">6 LPA</div><div class="l">Average package for the batch so far</div></div>
+        <div class="hl-card"><div class="n">856</div><div class="l">Offers from Fortune 500 companies</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="container"><div class="stats-grid reveal">
-    <div class="stat"><b>30 acres</b><span>Green Jaipur campus</span></div>
-    <div class="stat"><b>29</b><span>Programs listed by ICFAI group campus page</span></div>
-    <div class="stat"><b>₹15 LPA</b><span>MBA highest domestic package reported for 2026 page</span></div>
-    <div class="stat"><b>₹30.22 LPA</b><span>MBA highest international package reported</span></div>
-  </div></div>
+<section id="testimonials">
+  <div class="section-head reveal center"><div class="kicker"><span class="rule"></span>Reviews</div><h3>What our students say</h3></div>
+  <div class="testi-wrap reveal">
+    <div class="testi active"><p>"The faculty pushed me to build real projects, not just pass exams. That made all the difference at placements."</p><div class="who">Ananya Rathore, BCA 2025</div></div>
+    <div class="testi"><p>"Small batch sizes meant I actually got mentorship, not just lectures."</p><div class="who">Karan Mehta, MBA 2024</div></div>
+    <div class="testi"><p>"The internship pipeline is real — I had an offer before my final semester ended."</p><div class="who">Priya Sharma, B.Tech CS 2025</div></div>
+  </div>
+  <div class="testi-dots" id="testiDots"></div>
 </section>
 
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-head reveal"><div class="eyebrow">Why ICFAI</div><h2>One campus. Many paths.</h2><p>Designed around practical learning, technology, industry interaction, research and career preparation.</p></div>
-    <div class="grid-3">
-      <article class="card feature reveal"><div class="feature-icon">⌘</div><h3>Technology</h3><p>IcfaiTech focuses on science and technology with fundamentals, applications, internships and practical learning.</p></article>
-      <article class="card feature reveal"><div class="feature-icon">◈</div><h3>Industry</h3><p>Career preparation includes recruiter interaction, training, internships, mock interviews and placement activities.</p></article>
-      <article class="card feature reveal"><div class="feature-icon">✦</div><h3>Holistic growth</h3><p>Student life combines academics, events, innovation activities, leadership and professional skills.</p></article>
+<section id="contact">
+  <div class="contact-card reveal">
+    <div>
+      <h3>Get in touch</h3>
+      <p>Devdas University of Cambridge, Jaipur, Rajasthan</p>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container"><div class="tech-panel reveal"><div class="tech-grid"><div><div class="eyebrow" style="color:#58cfff">IcfaiTech Jaipur</div><h2 style="font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.05em;margin-bottom:14px">Build the skills behind the next generation of software.</h2><p>Technology programs can cover programming, computing, data, AI, cybersecurity and modern software development concepts.</p><div class="tech-list"><div class="tech-item"><b>💻 Software</b>Programming & development</div><div class="tech-item"><b>◉ Data</b>Analytics & databases</div><div class="tech-item"><b>⌁ AI</b>Emerging technology</div><div class="tech-item"><b>☁ Cloud</b>Modern infrastructure</div></div></div><div class="tech-visual"><div class="orbit"><i class="dot d1"></i><i class="dot d2"></i><i class="dot d3"></i><i class="dot d4"></i><div class="orbit-center">ICFAI<br>TECH</div></div></div></div></div></div>
-</section>
-
-<section class="section" id="programs">
-  <div class="container">
-    <div class="section-head reveal"><div class="eyebrow">Academics</div><h2>Programs for different ambitions.</h2><p>Selected 2026 program categories from the Jaipur university site.</p></div>
-    <div class="program-tools"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="tech">Technology</button><button class="filter" data-filter="business">Business</button><button class="filter" data-filter="law">Law</button><button class="filter" data-filter="science">Science</button><button class="filter" data-filter="arts">Liberal Arts</button><button class="filter" data-filter="pharmacy">Pharmacy</button></div>
-    <div class="grid-3" id="programGrid">
-      <article class="card program-card reveal" data-cat="tech"><span class="tag">Technology</span><h3>B.Tech</h3><p>Engineering and technology-oriented undergraduate study.</p></article>
-      <article class="card program-card reveal" data-cat="tech"><span class="tag">Technology</span><h3>BCA</h3><p>Computer applications with software and computing foundations.</p></article>
-      <article class="card program-card reveal" data-cat="tech"><span class="tag">Technology</span><h3>MCA</h3><p>Postgraduate computer applications program.</p></article>
-      <article class="card program-card reveal" data-cat="business"><span class="tag">Business</span><h3>BBA</h3><p>Business fundamentals, management and professional skills.</p></article>
-      <article class="card program-card reveal" data-cat="business"><span class="tag">Business</span><h3>BBA Business Analytics</h3><p>Business education with analytics-oriented learning.</p></article>
-      <article class="card program-card reveal" data-cat="business"><span class="tag">Business</span><h3>MBA</h3><p>Postgraduate management education with industry exposure.</p></article>
-      <article class="card program-card reveal" data-cat="law"><span class="tag">Law</span><h3>BA-LL.B / BBA-LL.B</h3><p>Integrated undergraduate law programs.</p></article>
-      <article class="card program-card reveal" data-cat="law"><span class="tag">Law</span><h3>LL.B / LL.M</h3><p>Undergraduate and postgraduate legal education.</p></article>
-      <article class="card program-card reveal" data-cat="science"><span class="tag">Science</span><h3>B.Sc. / M.Sc. Forensic Science</h3><p>Science and forensic learning pathways.</p></article>
-      <article class="card program-card reveal" data-cat="arts"><span class="tag">Liberal Arts</span><h3>BA Psychology</h3><p>Human behaviour, psychology and interdisciplinary learning.</p></article>
-      <article class="card program-card reveal" data-cat="arts"><span class="tag">Liberal Arts</span><h3>BA Economics</h3><p>Economic thinking, analysis and contemporary applications.</p></article>
-      <article class="card program-card reveal" data-cat="pharmacy"><span class="tag">Pharmacy</span><h3>B.Pharmacy</h3><p>Undergraduate pharmaceutical sciences pathway.</p></article>
+    <div class="contact-links">
+      <a href="mailto:admissions@devdasuniversity.edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        admissions@devdasuniversity.edu
+      </a>
+      <a href="tel:+919578xxxx20">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg>
+        +91 9578xxxx20
+      </a>
     </div>
+    <a href="#courses" class="btn-primary">Apply now</a>
   </div>
 </section>
 
-<section class="section" id="placements">
-  <div class="container">
-    <div class="section-head reveal"><div class="eyebrow">Career & Placements</div><h2>Placement information, clearly presented.</h2><p>Figures below are presented as reported on ICFAI University Jaipur's current placement/admissions pages; always verify the latest official notice before making admission decisions.</p></div>
-    <div class="split">
-      <div class="card info-panel reveal"><h3>2026 reported highlights</h3><div class="placement-number">₹15 LPA</div><p>Highest domestic MBA package reported on the current Jaipur placement page.</p><div class="fee-row"><span>International MBA</span><b>₹30.22 LPA</b></div><div class="fee-row"><span>Top 10% average</span><b>₹12.80 LPA</b></div><div class="fee-row"><span>Top 25% average</span><b>₹11.75 LPA</b></div><div class="fee-row"><span>Remaining 65% average</span><b>₹8.20 LPA</b></div></div>
-      <div class="card info-panel reveal"><h3>IcfaiTech recruiter examples</h3><p>Examples listed on the Jaipur placement page include:</p><div class="company-wall"><div class="company">TCS</div><div class="company">D.E. Shaw India</div><div class="company">Wipro</div><div class="company">Accenture</div><div class="company">Infosys</div><div class="company">Tech Mahindra</div><div class="company">Persistent</div><div class="company">PayU</div><div class="company">Paytm</div><div class="company">Snapdeal</div><div class="company">Xebia</div><div class="company">Celebal</div><div class="company">Dotsquares</div><div class="company">Collabera</div></div><p style="margin-top:16px;font-size:11px">Recruiter lists can change by program and graduating batch.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="campuses">
-  <div class="container">
-    <div class="section-head reveal"><div class="eyebrow">ICFAI Network</div><h2>University campuses across India.</h2><p>Campus images below are linked directly from ICFAI's official university network pages.</p></div>
-    <div class="campus-grid">
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/IFHE.jpg" alt="IFHE Hyderabad campus"><div class="campus-body"><small>Telangana</small><h3>IFHE Hyderabad</h3><p>ICFAI Foundation for Higher Education</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Dehradun.jpg" alt="ICFAI University Dehradun campus"><div class="campus-body"><small>Uttarakhand</small><h3>Dehradun</h3><p>The ICFAI University, Dehradun</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Himachal.jpg" alt="ICFAI University Himachal Pradesh campus"><div class="campus-body"><small>Himachal Pradesh</small><h3>Himachal Pradesh</h3><p>The ICFAI University, Himachal Pradesh</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI University Jaipur campus"><div class="campus-body"><small>Rajasthan</small><h3>Jaipur</h3><p>The ICFAI University, Jaipur • IcfaiTech</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Jharkhand.jpg" alt="ICFAI University Jharkhand campus"><div class="campus-body"><small>Jharkhand</small><h3>Jharkhand</h3><p>The ICFAI University, Jharkhand</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Meghalaya.jpg" alt="ICFAI University Meghalaya campus"><div class="campus-body"><small>Meghalaya</small><h3>Meghalaya</h3><p>The ICFAI University, Meghalaya</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Mizoram.jpg" alt="ICFAI University Mizoram campus"><div class="campus-body"><small>Mizoram</small><h3>Mizoram</h3><p>The ICFAI University, Mizoram</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Nagaland.jpg" alt="ICFAI University Nagaland campus"><div class="campus-body"><small>Nagaland</small><h3>Nagaland</h3><p>The ICFAI University, Nagaland</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Raipur.jpg" alt="ICFAI University Raipur campus"><div class="campus-body"><small>Chhattisgarh</small><h3>Raipur</h3><p>The ICFAI University, Raipur</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Sikkim.jpg" alt="ICFAI University Sikkim campus"><div class="campus-body"><small>Sikkim</small><h3>Sikkim</h3><p>The ICFAI University, Sikkim</p></div></article>
-      <article class="campus reveal"><img loading="lazy" decoding="async" src="https://www.icfaiuniversity.in/assets/img/campuse-building/ICFAI-University-Tripura.jpg" alt="ICFAI University Tripura campus"><div class="campus-body"><small>Tripura</small><h3>Tripura</h3><p>The ICFAI University, Tripura</p></div></article>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="life">
-  <div class="container">
-    <div class="section-head reveal"><div class="eyebrow">Campus Life</div><h2>More than classrooms.</h2><p>Official Jaipur campus pages highlight transport, library, computer labs, classrooms, cultural events, hostel and fitness facilities.</p></div>
-    <div class="gallery">
-      <img class="large" loading="lazy" src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI Jaipur campus">
-      <img loading="lazy" src="https://www.iujaipur.edu.in/assets/img/HomePage/placements2.jpg" alt="ICFAI Jaipur placement graphic">
-      <img loading="lazy" src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI Jaipur campus view">
-      <img loading="lazy" src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI Jaipur university">
-      <img loading="lazy" src="https://www.iujaipur.edu.in/assets/img/campus-building.jpg" alt="ICFAI Jaipur campus life">
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <div class="container contact">
-    <div class="card contact-info reveal"><div class="eyebrow">Admissions 2026</div><h3>Start your enquiry.</h3><p>Use this demo form to prepare an enquiry. It does not send data to the university server.</p><div class="contact-item"><small>Campus</small><b>Near Cambay Golf Resort, Agra Road, Jamdoli, Jaipur – 302031</b></div><div class="contact-item"><small>Admissions</small><b>+91 8094688800</b></div><div class="contact-item"><small>Email</small><b>admissions@iujaipur.edu.in</b></div><div class="contact-item"><small>Placement Office</small><b>+91 9785015276</b></div></div>
-    <form class="card form reveal" id="contactForm"><div class="form-grid"><div class="field"><label for="name">Full name</label><input id="name" required placeholder="Your name"></div><div class="field"><label for="phone">Phone</label><input id="phone" type="tel" required placeholder="Phone number"></div><div class="field"><label for="course">Program</label><select id="course"><option>B.Tech</option><option>BCA</option><option>MCA</option><option>MBA</option><option>BBA</option><option>Other</option></select></div><div class="field"><label for="city">City</label><input id="city" placeholder="Your city"></div><div class="field full"><label for="message">Message</label><textarea id="message" placeholder="Write your question..."></textarea></div></div><button class="btn btn-primary" type="submit" style="margin-top:15px">Send Enquiry →</button></form>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container"><div class="footer-grid"><div><a class="brand" href="#home"><span class="brand-mark"><span>IU</span></span><span class="brand-text" style="color:#fff">ICFAI UNIVERSITY<small style="color:#8ea0bc">JAIPUR • ICFAITECH</small></span></a><p style="margin-top:15px">Modern single-file website concept. Verify current admissions, fees and placement information on the official university website.</p></div><div><h4>Explore</h4><a href="#about">About</a><a href="#programs">Programs</a><a href="#placements">Placements</a></div><div><h4>Network</h4><a href="#campuses">ICFAI Campuses</a><a href="#life">Campus Life</a><a href="#contact">Admissions</a></div><div><h4>Official</h4><a href="https://www.iujaipur.edu.in/" target="_blank" rel="noopener">ICFAI Jaipur Website ↗</a><a href="https://www.iujaipur.edu.in/placements" target="_blank" rel="noopener">Placement Page ↗</a></div></div><div class="footer-bottom"><span>© 2026 ICFAI University Jaipur website concept</span><span>Built with HTML • CSS • JavaScript</span></div></div>
-</footer>
-
-<button class="chat-launch" id="chatLaunch" aria-label="Open chatbot">✦</button>
-<div class="chat" id="chat"><div class="chat-head"><b>ICFAI Assistant</b><button class="chat-close" id="chatClose" aria-label="Close">×</button></div><div class="messages" id="messages"><div class="msg bot">Hi! 👋 Ask me about programs, fees, placements, campus or contact.</div></div><div class="chat-input"><input id="chatInput" placeholder="Ask a question..."><button id="chatSend">Send</button></div></div>
+<footer>© 2026 Devdas University of Cambridge, Jaipur</footer>
 
 <script>
-(function(){
-  'use strict';
-  const nav=document.getElementById('nav'),menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
-  menuBtn.addEventListener('click',()=>{navLinks.classList.toggle('open');document.body.classList.toggle('menu-open',navLinks.classList.contains('open'));});
-  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');document.body.classList.remove('menu-open')}));
-
-  let navTick=false;
-  window.addEventListener('scroll',()=>{if(navTick)return;navTick=true;requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>8);navTick=false})},{passive:true});
-
-  const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{rootMargin:'0px 0px -60px 0px',threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-  document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
-    const filter=btn.dataset.filter;document.querySelectorAll('.program-card').forEach(card=>card.classList.toggle('hide',filter!=='all'&&card.dataset.cat!==filter));
-  }));
-
-  document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim()||'Student';const course=document.getElementById('course').value;alert('Thank you, '+name+'!\n\nYour enquiry for '+course+' has been prepared.\n\nThis single-file demo does not send data to a server.');e.target.reset();});
-
-  const chat=document.getElementById('chat'),launch=document.getElementById('chatLaunch'),close=document.getElementById('chatClose'),input=document.getElementById('chatInput'),send=document.getElementById('chatSend'),messages=document.getElementById('messages');
-  launch.addEventListener('click',()=>{chat.classList.toggle('open');if(chat.classList.contains('open'))input.focus()});close.addEventListener('click',()=>chat.classList.remove('open'));
-  function addMsg(text,type){const el=document.createElement('div');el.className='msg '+type;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight}
-  function reply(q){q=q.toLowerCase();if(/hi|hello|hey/.test(q))return 'Hello! 👋 How can I help with ICFAI Jaipur?';if(/placement|job|recruit/.test(q))return 'The Jaipur placement page lists recruiters such as TCS, Wipro, Accenture, Infosys, Tech Mahindra, Persistent, PayU and Paytm. Figures can vary by batch and program.';if(/fee|fees|cost/.test(q))return 'The official Jaipur site publishes an Admission & Program Fee 2026 page. Please verify the latest fee before applying.';if(/btech/.test(q))return 'B.Tech is listed among Jaipur technology programs. You can use the Programs section above for a quick overview.';if(/bca/.test(q))return 'BCA is listed under IcfaiTech and is focused on computer applications and related skills.';if(/mca/.test(q))return 'MCA is a postgraduate computer applications program listed by the Jaipur university.';if(/mba/.test(q))return 'MBA is offered by IBS Jaipur. The current placement page reports MBA domestic and international package figures.';if(/campus|address|location/.test(q))return 'Jaipur campus: Near Cambay Golf Resort, Agra Road, Jamdoli, Jaipur – 302031.';if(/contact|phone|email/.test(q))return 'Admissions: +91 8094688800 • admissions@iujaipur.edu.in';return 'I can help with programs, fees, placements, campus, B.Tech, BCA, MCA, MBA or contact details.'}
-  function sendMsg(){const q=input.value.trim();if(!q)return;addMsg(q,'user');input.value='';window.setTimeout(()=>addMsg(reply(q),'bot'),120)}
-  send.addEventListener('click',sendMsg);input.addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg()});
-})();
+// theme toggle
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+try{ if(localStorage.getItem('xu-theme')==='dark') root.setAttribute('data-theme','dark'); }catch(e){}
+themeBtn.addEventListener('click',()=>{
+  const dark=root.getAttribute('data-theme')==='dark';
+  dark?root.removeAttribute('data-theme'):root.setAttribute('data-theme','dark');
+  try{localStorage.setItem('xu-theme',dark?'light':'dark');}catch(e){}
+});
+// mobile menu
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('open');navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menuBtn.classList.remove('open');navLinks.classList.remove('open');}));
+// ripple on buttons
+document.querySelectorAll('.btn-primary,.btn-ghost').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=this.getBoundingClientRect(),s=Math.max(r.width,r.height),c=document.createElement('span');
+    c.className='ripple';c.style.width=c.style.height=s+'px';
+    c.style.left=(e.clientX-r.left-s/2)+'px';c.style.top=(e.clientY-r.top-s/2)+'px';
+    this.appendChild(c);setTimeout(()=>c.remove(),650);
+  });
+});
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// counters
+function animateCounter(el){
+  const target=+el.dataset.count,dur=1100,start=performance.now();
+  requestAnimationFrame(function step(now){
+    const p=Math.min((now-start)/dur,1),eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(eased*target);
+    if(p<1) requestAnimationFrame(step);
+  });
+}
+const statIO=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){animateCounter(en.target);statIO.unobserve(en.target);}}),{threshold:.4});
+document.querySelectorAll('.num[data-count]').forEach(el=>statIO.observe(el));
+// testimonial slider
+const testis=document.querySelectorAll('.testi'),dotsWrap=document.getElementById('testiDots');
+let ti=0;
+testis.forEach((_,i)=>{
+  const d=document.createElement('button');
+  if(i===0)d.classList.add('active');
+  d.addEventListener('click',()=>showTesti(i));
+  dotsWrap.appendChild(d);
+});
+function showTesti(i){
+  testis[ti].classList.remove('active');
+  dotsWrap.children[ti].classList.remove('active');
+  ti=i;
+  testis[ti].classList.add('active');
+  dotsWrap.children[ti].classList.add('active');
+}
+// 3D tilt on recruiter + highlight cards
+document.querySelectorAll('.recruiter-card, .hl-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5, y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`rotateY(${x*16}deg) rotateX(${-y*16}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+// placements counter + 3D spin-in, triggered once in view
+const plNumber=document.getElementById('plNumber');
+const plIO=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){
+    plNumber.classList.add('spin-in');
+    const target=2104,dur=1400,start=performance.now();
+    requestAnimationFrame(function step(now){
+      const p=Math.min((now-start)/dur,1),eased=1-Math.pow(1-p,3);
+      plNumber.textContent=Math.round(eased*target).toLocaleString('en-IN');
+      if(p<1) requestAnimationFrame(step);
+    });
+    plIO.unobserve(en.target);
+  }
+}),{threshold:.5});
+plIO.observe(plNumber);
 </script>
 </body>
 </html>
