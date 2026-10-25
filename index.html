@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f7">
+<title>Website Directory | Home</title>
+<script>
+/* apply the saved theme before first paint so there is no flash */
+(function(){
+  var t = null;
+  try { t = localStorage.getItem('wd-theme'); } catch(e) {}
+  if (t !== 'dark' && t !== 'light') {
+    t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<style>
+:root{
+  --bg:#f5f5f7; --bg2:#ffffff; --card:#ffffff; --ink:#1d1d1f; --muted:#6e6e73;
+  --line:rgba(0,0,0,.08); --accent:#0071e3; --glass:rgba(251,251,253,.72);
+  --shadow:0 2px 6px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.06);
+  --shadow-hover:0 4px 10px rgba(0,0,0,.05),0 28px 56px rgba(0,0,0,.12);
+  --orb1:rgba(0,113,227,.22); --orb2:rgba(191,90,242,.20); --orb3:rgba(255,159,10,.18);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#000000; --bg2:#0b0b0d; --card:#1c1c1e; --ink:#f5f5f7; --muted:#a1a1a6;
+  --line:rgba(255,255,255,.12); --accent:#2997ff; --glass:rgba(22,22,23,.72);
+  --shadow:0 2px 6px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.5);
+  --shadow-hover:0 4px 10px rgba(0,0,0,.5),0 28px 56px rgba(0,0,0,.7);
+  --orb1:rgba(41,151,255,.28); --orb2:rgba(191,90,242,.26); --orb3:rgba(255,159,10,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s ease,color .4s ease}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+
+/* ---------- glass navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1120px;margin:0 auto;height:56px;padding:0 24px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em;white-space:nowrap}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text small{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:1px}
+.logo{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(145deg,#2997ff,#bf5af2);color:#fff;font-size:15px;font-weight:700}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-links a{padding:7px 14px;border-radius:999px;font-size:14px;color:var(--muted);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:var(--line)}
+.icon-btn{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:17px;transition:background .2s,transform .2s}
+.icon-btn:hover{background:var(--line);transform:scale(1.06)}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn .sun{display:none}
+[data-theme="dark"] .icon-btn .sun{display:inline}
+[data-theme="dark"] .icon-btn .moon{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;text-align:center;padding:96px 24px 56px;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+.orb.a{width:420px;height:420px;background:var(--orb1);top:-120px;left:8%}
+.orb.b{width:380px;height:380px;background:var(--orb2);top:-60px;right:6%}
+.orb.c{width:320px;height:320px;background:var(--orb3);bottom:-140px;left:42%}
+.hero > *:not(.orb){position:relative;z-index:1}
+.eyebrow{font-size:15px;font-weight:600;color:var(--accent);letter-spacing:-.01em;margin-bottom:14px}
+h1{font-size:clamp(40px,8vw,84px);line-height:1.04;letter-spacing:-.045em;font-weight:700;max-width:900px;margin:0 auto 22px}
+h1 .grad{background:linear-gradient(90deg,#2997ff,#bf5af2 55%,#ff9f0a);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.intro{font-size:clamp(17px,2.2vw,21px);line-height:1.5;color:var(--muted);max-width:640px;margin:0 auto}
+
+/* ---------- toolbar ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin:8px 0 26px}
+.search{position:relative;flex:1 1 320px;max-width:460px}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);pointer-events:none}
+.search input{width:100%;height:48px;padding:0 44px 0 44px;border-radius:999px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);font-size:16px;outline:none;transition:border-color .2s,box-shadow .2s}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+.search input::-webkit-search-cancel-button{display:none}
+.clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:0;background:var(--line);color:var(--muted);cursor:pointer;display:none;font-size:15px;line-height:1}
+.clear.show{display:block}
+.right{display:flex;align-items:center;gap:14px}
+.count{font-size:14px;color:var(--muted)}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--line);gap:2px}
+.seg button{display:flex;align-items:center;gap:7px;padding:8px 16px;border:0;border-radius:999px;background:transparent;color:var(--muted);font-size:14px;font-weight:500;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
+.seg button svg{width:16px;height:16px}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.18)}
+
+/* ---------- cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{position:relative;display:flex;flex-direction:column;min-height:260px;padding:26px;border-radius:28px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at 85% -10%,color-mix(in srgb,var(--c) 22%,transparent),transparent 60%);opacity:.7;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-8px) scale(1.012);box-shadow:var(--shadow-hover);border-color:color-mix(in srgb,var(--c) 45%,var(--line))}
+.card:hover::before{opacity:1}
+.card:active{transform:scale(.99)}
+.card > *{position:relative}
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.emoji{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:color-mix(in srgb,var(--c) 16%,var(--card));font-size:30px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card:hover .emoji{transform:rotate(-6deg) scale(1.1)}
+.tag{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--muted);background:var(--line);padding:6px 10px;border-radius:999px}
+.card h2{font-size:23px;letter-spacing:-.03em;font-weight:650;margin-bottom:8px;line-height:1.2}
+.card p{font-size:15px;line-height:1.55;color:var(--muted);margin-bottom:24px}
+.open{margin-top:auto;display:flex;align-items:center;justify-content:space-between;color:var(--accent);font-size:15px;font-weight:600}
+.open b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,transparent);font-size:17px;transition:transform .3s,background .3s,color .3s}
+.card:hover .open b{background:var(--accent);color:#fff;transform:translate(3px,-3px)}
+
+/* list view */
+.grid[data-view="list"]{grid-template-columns:1fr;gap:12px}
+.grid[data-view="list"] .card{display:grid;grid-template-columns:auto 1fr auto auto;grid-template-areas:"e b t o";align-items:center;column-gap:20px;min-height:0;padding:16px 22px;border-radius:22px}
+.grid[data-view="list"] .card-top{display:contents}
+.grid[data-view="list"] .emoji{grid-area:e;width:50px;height:50px;font-size:25px;border-radius:15px}
+.grid[data-view="list"] .body{grid-area:b}
+.grid[data-view="list"] .tag{grid-area:t}
+.grid[data-view="list"] .open{grid-area:o;margin:0;gap:12px}
+.grid[data-view="list"] .card h2{font-size:19px;margin-bottom:2px}
+.grid[data-view="list"] .card p{margin:0;font-size:14px}
+.grid[data-view="list"] .card:hover{transform:translateX(6px)}
+.grid[data-view="list"] .open span{display:none}
+
+.card[hidden]{display:none}
+.empty{display:none;text-align:center;padding:64px 20px;color:var(--muted)}
+.empty.show{display:block}
+.empty .big{font-size:44px;margin-bottom:10px}
+.empty h3{color:var(--ink);font-size:21px;margin-bottom:6px;letter-spacing:-.02em}
+
+.note{margin:48px 0 0;padding:18px 22px;border:1px dashed var(--line);border-radius:18px;color:var(--muted);font-size:14px;line-height:1.6}
+.note code{background:var(--line);padding:2px 7px;border-radius:6px;font-size:13px;color:var(--ink)}
+
+footer{margin-top:72px;border-top:1px solid var(--line);background:var(--bg2)}
+.foot{max-width:1120px;margin:0 auto;padding:26px 24px 34px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.foot .creator{display:block;font-size:12px;margin-top:2px}
+.foot .copyright{font-weight:600}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .orb.a{animation:float 14s ease-in-out infinite}
+  .orb.b{animation:float 17s ease-in-out infinite reverse}
+  .orb.c{animation:float 20s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,26px)}}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{display:none}
+  .nav-in{justify-content:space-between}
+  .hero{padding-top:64px}
+}
+@media (max-width:620px){
+  .nav-in{padding:0 16px}
+  .wrap{padding:0 16px}
+  .hero{padding:48px 16px 36px}
+  .grid{grid-template-columns:1fr}
+  .card{min-height:220px}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .search{max-width:none}
+  .right{justify-content:space-between}
+  .grid[data-view="list"] .card{grid-template-columns:auto 1fr auto;grid-template-areas:"e b o";column-gap:14px;padding:14px 16px}
+  .grid[data-view="list"] .tag{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Website Directory home"><span class="logo">W</span><span class="brand-text">Website Directory<small>Created by Abhishek Khangwal</small></span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#websites">Websites</a>
+    </nav>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch between dark and light mode" title="Dark / Light">
+      <span class="moon" aria-hidden="true">🌙</span><span class="sun" aria-hidden="true">☀️</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <span class="orb a"></span><span class="orb b"></span><span class="orb c"></span>
+    <div class="eyebrow rv">Your website collection</div>
+    <h1 class="rv" style="--d:80ms">Choose a website.<br><span class="grad">Open it separately.</span></h1>
+    <p class="intro rv" style="--d:160ms">All five projects are listed here. Select any card to navigate directly to its own HTML page — the websites do not open inside this index page.</p>
+  </section>
+
+  <section class="wrap" id="websites" aria-label="Separate website links">
+    <div class="toolbar rv">
+      <div class="search" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search websites… (press / )" autocomplete="off" aria-label="Search websites">
+        <button class="clear" id="clear" type="button" aria-label="Clear search">✕</button>
+      </div>
+      <div class="right">
+        <span class="count" id="count" aria-live="polite">5 websites</span>
+        <div class="seg" role="group" aria-label="Choose layout">
+          <button type="button" id="vGrid" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Grid</button>
+          <button type="button" id="vList" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>List</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid" data-view="grid">
+      <a class="card rv" style="--c:#ff9f0a;--d:0ms" href="Danish_Bhai_Book_Store_Full_Book_Covers.html" data-keywords="book store books covers library collection danish bhai kitab pustak">
+        <div class="card-top"><span class="emoji">📚</span><span class="tag">BOOK STORE</span></div>
+        <div class="body"><h2>Danish Bhai Book Store</h2>
+        <p>Books, covers and library collection</p></div>
+        <span class="open"><span>Open website</span> <b aria-hidden="true">↗</b></span>
+      </a>
+      <a class="card rv" style="--c:#ff453a;--d:70ms" href="Food%20Corner.html" data-keywords="food corner restaurant menu dishes eat khana cafe">
+        <div class="card-top"><span class="emoji">🍽️</span><span class="tag">RESTAURANT</span></div>
+        <div class="body"><h2>Food Corner</h2>
+        <p>Explore the restaurant menu and food experience</p></div>
+        <span class="open"><span>Open website</span> <b aria-hidden="true">↗</b></span>
+      </a>
+      <a class="card rv" style="--c:#30d158;--d:140ms" href="SMS%20Hospital.html" data-keywords="sms hospital healthcare doctor departments medical health appointment">
+        <div class="card-top"><span class="emoji">🏥</span><span class="tag">HEALTHCARE</span></div>
+        <div class="body"><h2>SMS Hospital</h2>
+        <p>Healthcare, departments and hospital information</p></div>
+        <span class="open"><span>Open website</span> <b aria-hidden="true">↗</b></span>
+      </a>
+      <a class="card rv" style="--c:#0a84ff;--d:210ms" href="college_website.html" data-keywords="icfai university jaipur college admissions programs programmes campus">
+        <div class="card-top"><span class="emoji">🎓</span><span class="tag">UNIVERSITY</span></div>
+        <div class="body"><h2>The ICFAI University, Jaipur</h2>
+        <p>University overview, programs and admissions</p></div>
+        <span class="open"><span>Open website</span> <b aria-hidden="true">↗</b></span>
+      </a>
+      <a class="card rv" style="--c:#bf5af2;--d:280ms" href="cs_deparment.html" data-keywords="computer science department cs courses faculty education academic">
+        <div class="card-top"><span class="emoji">💻</span><span class="tag">EDUCATION</span></div>
+        <div class="body"><h2>Computer Science Department</h2>
+        <p>Computer science department and academic details</p></div>
+        <span class="open"><span>Open website</span> <b aria-hidden="true">↗</b></span>
+      </a>
+    </div>
+
+    <div class="empty" id="empty" role="status">
+      <div class="big">🔍</div>
+      <h3>No website found</h3>
+      <p>Try another name or keyword, like “food”, “hospital” or “book”.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="note rv"><strong>Important:</strong> Keep this <code>index.html</code> and all five linked HTML files in the same folder. The links will then open each separate page correctly.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Website Directory · Simple links to separate HTML pages</span>
+    <span class="copyright">© 2026 Copyright by Abhishek Khangwal. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  function save(k, v){ try { localStorage.setItem(k, v); } catch(e) {} }
+  function load(k){ try { return localStorage.getItem(k); } catch(e) { return null; } }
+
+  /* ---------- dark / light mode ---------- */
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function paintMeta(){ if (meta) meta.setAttribute('content', root.getAttribute('data-theme') === 'dark' ? '#000000' : '#f5f5f7'); }
+  paintMeta();
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    save('wd-theme', next);
+    paintMeta();
+  });
+
+  /* ---------- grid / list view ---------- */
+  var grid = document.getElementById('grid');
+  var vGrid = document.getElementById('vGrid');
+  var vList = document.getElementById('vList');
+  function setView(v){
+    grid.setAttribute('data-view', v);
+    vGrid.setAttribute('aria-pressed', v === 'grid');
+    vList.setAttribute('aria-pressed', v === 'list');
+    save('wd-view', v);
+  }
+  vGrid.addEventListener('click', function(){ setView('grid'); });
+  vList.addEventListener('click', function(){ setView('list'); });
+  setView(load('wd-view') === 'list' ? 'list' : 'grid');
+
+  /* ---------- live search ---------- */
+  var q = document.getElementById('q');
+  var clear = document.getElementById('clear');
+  var empty = document.getElementById('empty');
+  var count = document.getElementById('count');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var hay = cards.map(function(c){
+    return (c.textContent + ' ' + (c.getAttribute('data-keywords') || '')).toLowerCase().replace(/\s+/g, ' ');
+  });
+  function filter(){
+    var words = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    var shown = 0;
+    cards.forEach(function(c, i){
+      var ok = words.every(function(w){ return hay[i].indexOf(w) !== -1; });
+      c.hidden = !ok;
+      if (ok) { shown++; c.classList.add('in'); }
+    });
+    count.textContent = shown + (shown === 1 ? ' website' : ' websites');
+    empty.classList.toggle('show', shown === 0);
+    clear.classList.toggle('show', q.value.length > 0);
+  }
+  q.addEventListener('input', filter);
+  clear.addEventListener('click', function(){ q.value = ''; filter(); q.focus(); });
+  document.addEventListener('keydown', function(e){
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (e.key === '/' && tag !== 'INPUT') { e.preventDefault(); q.focus(); }
+    if (e.key === 'Escape' && document.activeElement === q) { q.value = ''; filter(); q.blur(); }
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var items = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
